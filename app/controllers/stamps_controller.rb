@@ -15,7 +15,7 @@ class StampsController < ApplicationController
       )
     else
       current_user.stamps_posts << post
-      redirect_to stamps_path, success: "ラリーを開始します！"  
+      redirect_to stamps_path, success: "クエストを開始します！"  
     end
   end
 end

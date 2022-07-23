@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     post.stamped = true
     post.save!
-    redirect_to root_path, success: "スタンプを完了しました！"
+    redirect_to root_path, success: "クエストを完了しました！"
   end
 
   def destroy
