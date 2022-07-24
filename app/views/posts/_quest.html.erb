@@ -5,7 +5,11 @@
     <p><%=post.body%></p>
     <p><%=post.user.name%></p>
     <div class="card-actions justify-end">
+    <% if current_user.stamps_posts.include?(post)%>
+      このクエストにお出かけ中です
+    <%else%>
       <%= link_to 'クエストに出かける', set_stamp_path(id: post.id), class: 'btn btn-primary' %>
+    <%end%>
     </div>
   </div>
 </div>

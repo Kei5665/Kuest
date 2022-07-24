@@ -2,6 +2,8 @@
 
 <%= render 'search'%>
 
+<%= render 'bottom_nav'%>
+
 <%= render partial: 'post', collection: @posts %>
 
 <%= render 'form'%>
@@ -58,6 +60,7 @@
 
       // 検索ボックスの初期設定
       map.controls[google.maps.ControlPosition.TOP].push(document.getElementById('bar'));
+      map.controls[google.maps.ControlPosition.BOTTOM].push(document.getElementById('bar2'));
       let autocomplete = new google.maps.places.Autocomplete(document.getElementById('autoc'));
       autocomplete.bindTo('bounds', map);
       // 検索されたら中央に検索された場所が来るようにする

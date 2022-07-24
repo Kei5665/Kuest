@@ -2,7 +2,13 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
 
+    if current_user
+      @finished_quests = current_user.posts.joins(:stamps).where(stamps: {stamped: true})
+    end
+
     @posts = Post.all
+
+    @user
   end
   
   def create
@@ -19,9 +25,9 @@ class PostsController < ApplicationController
   end
 
   def stamped
-    post = Post.find(params[:id])
-    post.stamped = true
-    post.save!
+    stamp = current_user.stamps.find_by(post_id: params[:id])
+    stamp.stamped = true
+    stamp.save!
     redirect_to root_path, success: "クエストを完了しました！"
   end
 

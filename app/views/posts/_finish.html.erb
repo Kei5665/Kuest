@@ -1,1 +1,8 @@
-<li><a><%=post.title%></a></li>
+<div class="card card-compact bg-base-100 shadow-xl my-5">
+  <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+  <div class="card-body object-contain">
+    <h2 class="card-title"><%=post.title%></h2>
+    <p><%=post.body%></p>
+    <p><%=post.user.name%></p>
+  </div>
+</div>
