@@ -7,9 +7,7 @@
     <% if post.image.attached? %>
       <%= image_tag post.image %>
     <% end %>
-    <%= link_to '削除', post_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
+    <%= link_to 'クエストに出かける', set_stamp_path(id: post.id), class: 'btn btn-primary' %>
     <label for="my-modal-<%=post.id%>" class="btn">閉じる</label>
-    <button class="btn btn-warning" id="<%=post.id%>" value="<%=post.latlng%>" onclick="calculateDistance(this.value,this.id)">距離を測る</button>
-    <%= link_to 'スタンプを完了する', stamped_post_path(id: post.id),id: "#{post.id}-stamp", class: 'btn btn-success disable' %>
   </div>
 </div>

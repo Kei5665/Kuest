@@ -1,14 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @post = Post.new
-
+    @posts = Post.all
+    gon.json = @posts.to_json
     if current_user
       @finished_quests = current_user.posts.joins(:stamps).where(stamps: {stamped: true})
     end
-
-    @posts = Post.all
-
-    @user
   end
   
   def create
