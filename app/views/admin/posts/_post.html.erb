@@ -1,0 +1,13 @@
+<input type="checkbox" id="my-modal-<%=post.id%>" class="modal-toggle" />
+<div class="modal" id="my-modal-<%=post.id%>">
+  <div class="modal-box">
+    <p class="py-4"><%= post.user.name %></p>
+    <h3 class="font-bold text-lg"><%=post.title%></h3>
+    <p class="py-4"><%=post.body%></p>
+    <% if post.image.attached? %>
+      <%= image_tag post.image %>
+    <% end %>
+    <%= link_to '削除', post_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
+    <label for="my-modal-<%=post.id%>" class="btn">閉じる</label>
+  </div>
+</div>

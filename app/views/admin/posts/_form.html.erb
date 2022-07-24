@@ -1,0 +1,20 @@
+<input type="checkbox" id="my-stamp-modal" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box">
+  <h3 class="font-bold text-lg">クエストの作成</h3>
+  <%= form_with model: @post, url: admin_posts_path,class:'new_post',local: true do |f|%>
+  <turbo-frame id="post_error"></turbo-frame>
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title,class:'input input-bordered input-warning w-full' %>
+      <%= f.label :body %>
+      <%= f.text_area :body,class:'textarea textarea-warning w-full', rows: 5  %>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :latlng,class:'input input-bordered input-warning w-full', id: 'latlng' %>
+    </div>
+    <%= f.submit class:'btn btn-warning'%>
+    <label for="my-stamp-modal" class="btn">閉じる!</label>
+  <%end%>
+  </div>
+</div>

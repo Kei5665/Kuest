@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get "oauth/callback", to: "oauths#callback"
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
   get 'log_out', to: 'user_sessions#destroy', as: 'log_out'
+
+  namespace :admin do 
+    resources :posts, only: %i[index create destroy]
+  end
   
   resources :posts, only: %i[create show destroy] do
     member do
