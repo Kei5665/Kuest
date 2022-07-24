@@ -1,8 +1,8 @@
 <input type="checkbox" id="my-stamp-modal" class="modal-toggle" />
 <div class="modal">
   <div class="modal-box">
-  <h3 class="font-bold text-lg">スタンプの作成</h3>
-  <%= form_with model: @post,class:'new_post',local: true do |f|%>
+  <h3 class="font-bold text-lg">クエストの作成</h3>
+  <%= form_with model: @post, url: admin_posts_path,class:'new_post',local: true do |f|%>
   <turbo-frame id="post_error"></turbo-frame>
     <div>
       <%= f.label :title %>

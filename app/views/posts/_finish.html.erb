@@ -4,8 +4,5 @@
     <h2 class="card-title"><%=post.title%></h2>
     <p><%=post.body%></p>
     <p><%=post.user.name%></p>
-    <div class="card-actions justify-end">
-      <%= link_to 'スタンプをセットする', set_stamp_path(id: post.id), class: 'btn btn-primary' %>
-    </div>
   </div>
 </div>

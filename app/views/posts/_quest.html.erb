@@ -1,0 +1,15 @@
+<div class="card card-compact bg-base-100 shadow-xl my-5">
+  <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+  <div class="card-body object-contain">
+    <h2 class="card-title"><%=post.title%></h2>
+    <p><%=post.body%></p>
+    <p><%=post.user.name%></p>
+    <div class="card-actions justify-end">
+    <% if current_user.stamps_posts.include?(post)%>
+      このクエストにお出かけ中です
+    <%else%>
+      <%= link_to 'クエストに出かける', set_stamp_path(id: post.id), class: 'btn btn-primary' %>
+    <%end%>
+    </div>
+  </div>
+</div>

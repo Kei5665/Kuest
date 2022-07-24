@@ -1,104 +1,48 @@
 <div id="map"></div>
 
-<%= render 'search'%>
+<%= render 'bottom_nav'%>
 
 <%= render partial: 'post', collection: @posts %>
 
-<%= render 'form'%>
+<script>
 
-    <script>
+  let marker = [];
+  let jdata = JSON.parse(gon.json);
+  let infoWindow = [];
 
-    function initMap() {
-      // 初期位置
-      const Tokyo = { lat: 35.681427904704975, lng: 139.76717844133614 };
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 15,
-        center: Tokyo,
-        disableDefaultUI: true,
-        gestureHandling: 'greedy',
+  function initMap() {
+    // 初期位置
+    const Tokyo = { lat: 35.681427904704975, lng: 139.76717844133614 };
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 15,
+      center: Tokyo,
+      disableDefaultUI: true,
+      gestureHandling: 'greedy',
+    });
+    map.controls[google.maps.ControlPosition.BOTTOM].push(document.getElementById('bar2'));
+    // 投稿データをマーカーに代入する
+    for (var i = 0; i < jdata.length; i++) {
+      // 投稿ごとの緯度経度
+      markerLatLng = {lat: JSON.parse(jdata[i]['latlng'])['lat'], lng: JSON.parse(jdata[i]['latlng'])['lng']};
+      // マーカーに投稿ごとの緯度経度を代入
+      marker[i] = new google.maps.Marker({
+        position: markerLatLng,
+        map: map
       });
-
-      // 現在位置が取得できるとき初期位置に設定
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            //　現在位置を取得
-            currentPosition = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            };
-            // 現在位置は黄色の丸マーク
-            let currentMarker = new google.maps.Marker({
-            position: currentPosition,
-            map: map,
-              icon: {
-              fillColor: "yellow",
-              fillOpacity: 0.8,
-              path: google.maps.SymbolPath.CIRCLE,
-              scale: 16,
-              strokeColor: "black",
-              strokeWeight: 1.0
-            },
-            });
-            // 現在位置はクリックすると消えるようにする
-            currentMarker.addListener("click", () => {
-              currentMarker.setMap(null);
-            });
-            // 現在位置は中央にセット
-            map.setCenter(currentPosition);
-          },
-          () => {
-            handleLocationError(true, infoWindow, map.getCenter());
-          }
-        );
-      } else {
-        // ブラウザがGPSをサポートしていなかった場合
-        handleLocationError(false, infoWindow, map.getCenter());
-      }
-
-      // 検索ボックスの初期設定
-      map.controls[google.maps.ControlPosition.TOP].push(document.getElementById('bar'));
-      let autocomplete = new google.maps.places.Autocomplete(document.getElementById('autoc'));
-      autocomplete.bindTo('bounds', map);
-      // 検索されたら中央に検索された場所が来るようにする
-      autocomplete.addListener('place_changed', function() {
-        let place = autocomplete.getPlace();
-        if (place.geometry.viewport) {
-          map.fitBounds(place.geometry.viewport);
-        };
+      // 情報ウィンドウには投稿情報モーダルへのリンクを入れる
+      infoWindow[i] = new google.maps.InfoWindow({
+        content: '<div class=show-btn>'+'<h2 class="font-bold text-lg">'+jdata[i]["title"]+'</h2>'+'<label for="my-modal-'+jdata[i]["id"]+'" class="btn btn-warning modal-button-'+jdata[i]["id"]+' mb-4">詳細をみる</label>'+'</div>'
       });
+      // マーカー毎にクリックイベントを追加
+      markerEvent(i);
+    }
 
-      // クリックした場所にフォームを表示させる
-      map.addListener("click", showPostform);
-      function showPostform(event) {
-        let Position = event.latLng
-        // クリックした場所にマーカーを設置
-        let newMarker = new google.maps.Marker({
-          position: Position,
-          map: map,
-        });
-        // 情報ウィンドウの中身はフォームのリンク
-        let formLink = '<div class="show-btn">'+'<label for="my-stamp-modal" class="btn btn-warning modal-button">ここにスタンプポイントを作成する</label>'+'</div>'
-        const newInfowindow = new google.maps.InfoWindow({
-          content: formLink,
-        });
-        // クリックすると情報ウィンドウが出現
-        newMarker.addListener("click", () => {
-          newInfowindow.open({
-            anchor: newMarker,
-            map,
-            shouldFocus: true,
-          });
-        });
-        // 情報ウィンドウのバツボタンを押すとウィンドウが消えるイベントを追加
-        newInfowindow.addListener( "closeclick", function ( argument ) {
-          newMarker.setMap(null);
-        });
-        // フォームにクリックした場所の位置を送る
-        let formLatLng = document.getElementById('latlng');
-        formLatLng.value = JSON.stringify(Position);
-      };
-    };
-    </script>
-      
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap&v=weekly" defer></script>
+    // マーカーがクリックされたら投稿情報へのリンクを表示させる
+    function markerEvent(i) {
+      marker[i].addListener('click', function() { // マーカーをクリックしたとき
+        infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+      });
+    }
+  };
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap&v=weekly" defer></script>

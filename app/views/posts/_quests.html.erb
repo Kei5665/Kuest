@@ -1,8 +1,7 @@
-<label for="my-modal-4" class="btn modal-button">投稿一覧</label>
 <input type="checkbox" id="my-modal-4" class="modal-toggle" />
 <label for="my-modal-4" class="modal cursor-pointer">
   <label class="modal-box relative overflow-y-auto h-full" for="">
   <turbo-frame id="stamp_error"></turbo-frame>
-  <%= render partial: 'posts/stamp', collection: @posts, as: 'post' %>
+  <%= render partial: 'posts/quest', collection: @posts, as: 'post' %>
   </label>
 </label>

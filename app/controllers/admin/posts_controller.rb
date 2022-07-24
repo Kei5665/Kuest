@@ -1,16 +1,14 @@
-class PostsController < ApplicationController
+class Admin::PostsController < ApplicationController
   def index
+    @post = Post.new
     @posts = Post.all
     gon.json = @posts.to_json
-    if current_user
-      @finished_quests = current_user.posts.joins(:stamps).where(stamps: {stamped: true})
-    end
   end
   
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to root_path, success: "投稿に成功しました！"
+      redirect_to admin_posts_path, success: "投稿に成功しました！"
     else
       render turbo_stream: turbo_stream.replace(
         'post_error',
@@ -20,17 +18,10 @@ class PostsController < ApplicationController
     end
   end
 
-  def stamped
-    stamp = current_user.stamps.find_by(post_id: params[:id])
-    stamp.stamped = true
-    stamp.save!
-    redirect_to root_path, success: "クエストを完了しました！"
-  end
-
   def destroy
     @post = Post.find(params[:id])
     @post.destroy!
-    redirect_to root_path
+    redirect_to admin_posts_path, success: "削除に成功しました！"
   end
 
   private
