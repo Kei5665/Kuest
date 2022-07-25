@@ -11,7 +11,7 @@
     <div class="flex flex-row">
       <!-- Item #1 -->
       <div class="flex-grow group">
-        <a href="#" class="p-3 text-gray-400 hover:text-yellow-500">
+        <%= link_to root_path, class: "p-3 text-gray-400 hover:text-yellow-500" do %>
           <span class="flex flex-col items-center">
             <!-- Icon -->
             <i class="mdi mdi-home-outline mdi-24px mx-1 text-gray-500 group-hover:text-gray-700
@@ -19,14 +19,14 @@
 
             <!-- Text -->
             <span class="text-xs mb-2 transition-all duration-200">
-              ホーム
+              切り替える
             </span>
 
             <!-- Focus Dot -->
             <span class="h-2 w-2 rounded-full group-hover:bg-yellow-500
               transition-all duration-150 delay-100"></span>
           </span>
-        </a>
+        <%end%>
       </div>
       <!-- Item #2 -->
       <div class="flex-grow group">
