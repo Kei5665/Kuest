@@ -4,7 +4,7 @@
   <label class="modal-box relative" for="">
     <% if current_user %>
       <%= link_to "ログアウト", log_out_path, class: "btn"%>
-      <%= link_to "ユーザー編集", edit_user_path(current_user), class: "btn"%>
+      <%= link_to "ユーザー名編集", edit_user_path(current_user), class: "btn"%>
     <%else%>
       <%= link_to 'Googleでログイン', auth_at_provider_path(provider: :google), class: "btn"%>
     <%end%>
