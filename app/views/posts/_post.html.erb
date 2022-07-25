@@ -7,7 +7,11 @@
     <% if post.image.attached? %>
       <%= image_tag post.image %>
     <% end %>
-    <%= link_to 'クエストに出かける', set_stamp_path(id: post.id), class: 'btn btn-primary' %>
+    <% if current_user %>
+      <%= link_to 'クエストに出かける', set_stamp_path(id: post.id), class: 'btn btn-primary' %>
+    <% else %>
+      <%= link_to 'ログインしてクエストに出かける', auth_at_provider_path(provider: :google), class: "btn btn-primary"%>
+    <% end %>
     <label for="my-modal-<%=post.id%>" class="btn">閉じる</label>
   </div>
 </div>
