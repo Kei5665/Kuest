@@ -1,4 +1,6 @@
 class StampsController < ApplicationController
+  before_action :require_login, only: %i[index]
+
   def index
     @posts = current_user.posts.joins(:stamps).where(stamps: {stamped: false})
     gon.json = @posts.to_json
