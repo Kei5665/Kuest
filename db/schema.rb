@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_25_080953) do
     t.datetime "date"
     t.string "place"
     t.string "target"
+    t.string "url"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

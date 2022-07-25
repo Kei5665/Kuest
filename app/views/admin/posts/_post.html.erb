@@ -1,12 +1,20 @@
 <input type="checkbox" id="my-modal-<%=post.id%>" class="modal-toggle" />
 <div class="modal" id="my-modal-<%=post.id%>">
   <div class="modal-box">
-    <p class="py-4"><%= post.user.name %></p>
-    <h3 class="font-bold text-lg"><%=post.title%></h3>
-    <p class="py-4"><%=post.body%></p>
     <% if post.image.attached? %>
       <%= image_tag post.image %>
     <% end %>
+    <h3 class="font-bold text-lg"><%=post.title%></h3>
+    <h3 class="font-bold text-lg">場所</h3>
+    <p class="py-4"><%=post.place%></p>
+    <h3 class="font-bold text-lg">日時</h3>
+    <p class="py-4"><%=post.date%></p>
+    <h3 class="font-bold text-lg">対象</h3>
+    <p class="py-4"><%=post.target%></p>
+    <h3 class="font-bold text-lg">詳細</h3>
+    <p class="py-4"><%=post.body%></p>
+    <h3 class="font-bold text-lg">URL</h3>
+    <p><%= raw Rinku.auto_link(h("#{post.url}")) %></p>
     <%= link_to '削除', post_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
     <label for="my-modal-<%=post.id%>" class="btn">閉じる</label>
   </div>

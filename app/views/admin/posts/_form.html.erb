@@ -7,8 +7,16 @@
     <div>
       <%= f.label :title %>
       <%= f.text_field :title,class:'input input-bordered input-warning w-full' %>
+      <%= f.label :place %>
+      <%= f.text_field :place,class:'input input-bordered input-warning w-full' %>
+      <%= f.label :date %>
+      <%= f.datetime_field :date,class:'input input-bordered input-warning w-full' %>
+      <%= f.label :target %>
+      <%= f.text_field :target,class:'input input-bordered input-warning w-full' %>
       <%= f.label :body %>
       <%= f.text_area :body,class:'textarea textarea-warning w-full', rows: 5  %>
+      <%= f.label :url %>
+      <%= f.text_field :url,class:'input input-bordered input-warning w-full' %>
       <%= f.label :image %>
       <%= f.file_field :image %>
       <%= f.hidden_field :latlng,class:'input input-bordered input-warning w-full', id: 'latlng' %>
