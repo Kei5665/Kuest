@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :posts, only: %i[index create destroy]
   end
   
-  resources :posts, only: %i[create show destroy] do
+  resources :posts, only: %i[index create show destroy] do
     member do
       get :stamped
     end

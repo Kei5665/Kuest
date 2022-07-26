@@ -1,6 +1,8 @@
 <div id="map"></div>
 
-<%= render partial: 'posts/post', collection: @posts %>
+<%= render 'stamps/bottom_nav'%>
+
+<%= render partial: 'stamps/post', collection: @posts %>
 
     <script>
 
@@ -56,19 +58,7 @@
         // ブラウザがGPSをサポートしていなかった場合
         handleLocationError(false, infoWindow, map.getCenter());
       }
-
-      // 検索ボックスの初期設定
-      map.controls[google.maps.ControlPosition.TOP].push(document.getElementById('bar'));
-      let autocomplete = new google.maps.places.Autocomplete(document.getElementById('autoc'));
-      autocomplete.bindTo('bounds', map);
-      // 検索されたら中央に検索された場所が来るようにする
-      autocomplete.addListener('place_changed', function() {
-        let place = autocomplete.getPlace();
-        if (place.geometry.viewport) {
-          map.fitBounds(place.geometry.viewport);
-        };
-      });
-
+    map.controls[google.maps.ControlPosition.BOTTOM].push(document.getElementById('bar2'));
       // 投稿データをマーカーに代入する
       for (var i = 0; i < jdata.length; i++) {
         // 投稿ごとの緯度経度
