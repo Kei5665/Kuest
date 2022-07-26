@@ -2,7 +2,7 @@
 <div class="modal" id="my-modal-<%=post.id%>">
   <div class="modal-box">
     <% if post.image.attached? %>
-      <%= image_tag post.image %>
+      <%= image_tag post.image.variant(resize_to_fill: [400,400]) %>
     <% end %>
     <h3 class="font-bold text-lg"><%=post.title%></h3>
     <h3 class="font-bold text-lg">場所</h3>
