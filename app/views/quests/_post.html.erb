@@ -1,24 +1,29 @@
 <input type="checkbox" id="my-modal-<%=post.id%>" class="modal-toggle" />
 <div class="modal" id="my-modal-<%=post.id%>">
   <div class="modal-box">
-    <% if post.image.attached? %>
-      <%= image_tag post.image %>
-    <% end %>
-    <h3 class="font-bold text-lg"><%=post.title%></h3>
-    <h3 class="font-bold text-lg">場所</h3>
-    <p class="py-4"><%=post.place%></p>
-    <h3 class="font-bold text-lg">日時</h3>
-    <p class="py-4"><%=post.date%></p>
-    <h3 class="font-bold text-lg">対象</h3>
-    <p class="py-4"><%=post.target%></p>
-    <h3 class="font-bold text-lg">詳細</h3>
-    <p class="py-4"><%=post.body%></p>
-    <h3 class="font-bold text-lg">URL</h3>
-    <p><%= raw Rinku.auto_link(h("#{post.url}")) %></p>
-    <%= link_to 'クエストをキャンセルする', quest_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
-    <button class="btn btn-warning" id="<%=post.id%>" value="<%=post.latlng%>" onclick="calculateDistance(this.value,this.id)">完了する</button>
-    <%= link_to 'クエストクリア！', clear_quest_path(id: post.id),id: "#{post.id}-stamp", class: 'btn btn-success disable' %>
-
-    <label for="my-modal-<%=post.id%>" class="btn">閉じる</label>
+    <div class="card w-full bg-base-100 shadow-xl mb-8">
+      <% if post.image.attached? %>
+      <figure><%= image_tag post.image.variant(resize_to_fill: [500,225]) %></figure>
+      <% end %>
+      <div class="card-body">
+        <h1 class="card-title pb-8"><%=post.title%></h1>
+        <h2 class="font-bold text-lg">場所</h2>
+        <p class="py-4 pl-3 text-base"><%=post.place%></p>
+        <h2 class="font-bold text-lg">日時</h2>
+        <p class="py-4 pl-3 text-base"><%=post.date%></p>
+        <h2 class="font-bold text-lg">対象</h2>
+        <p class="py-4 pl-3 text-base"><%=post.target%></p>
+        <h2 class="font-bold text-lg">詳細</h2>
+        <p class="py-4 pl-3 text-base"><%=post.body%></p>
+        <h2 class="font-bold text-lg">URL</h2>
+        <p class="p-4 text-base"><%= raw Rinku.auto_link(h("#{post.url}")) %></p>
+        <div class="card-actions justify-end">
+          <%= link_to 'クエストをキャンセルする', quest_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
+          <button class="btn btn-warning" id="<%=post.id%>" value="<%=post.latlng%>" onclick="calculateDistance(this.value,this.id)">完了する</button>
+          <%= link_to 'クエストクリア！', clear_quest_path(id: post.id),id: "#{post.id}-stamp", class: 'btn btn-success disable' %>
+          <label for="my-modal-<%=post.id%>" class="btn">閉じる</label>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
