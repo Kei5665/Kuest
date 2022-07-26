@@ -14,7 +14,7 @@
         <h2 class="font-bold text-lg">対象</h2>
         <p class="py-4 pl-3 text-base"><%=post.target%></p>
         <h2 class="font-bold text-lg">詳細</h2>
-        <p class="py-4 pl-3 text-base"><%=post.body%></p>
+        <p class="py-4 pl-3 text-base"><%=safe_join(post.body.split("\n"),tag(:br))%></p>
         <h2 class="font-bold text-lg">URL</h2>
         <p class="p-4 text-base"><%= raw Rinku.auto_link(h("#{post.url}")) %></p>
         <div class="card-actions justify-end">
