@@ -31,7 +31,7 @@
       });
       // 情報ウィンドウには投稿情報モーダルへのリンクを入れる
       infoWindow[i] = new google.maps.InfoWindow({
-        content: '<div class=show-btn>'+'<h2 class="font-bold text-lg">'+jdata[i]["title"]+'</h2>'+'<label for="my-modal-'+jdata[i]["id"]+'" class="btn btn-warning modal-button-'+jdata[i]["id"]+' mb-4">詳細をみる</label>'+'</div>'
+        content: '<div class=show-btn>'+'<h2 class="font-bold text-lg"">'+jdata[i]["title"]+'</h2>'+'<label for="my-modal-'+jdata[i]["id"]+'" class="w-full btn btn-warning modal-button-'+jdata[i]["id"]+' mb-4">詳細をみる</label>'+'</div>'
       });
       // マーカー毎にクリックイベントを追加
       markerEvent(i);

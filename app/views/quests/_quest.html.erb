@@ -1,8 +1,21 @@
-<div class="card card-compact bg-base-100 shadow-xl my-5">
-  <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-  <div class="card-body object-contain">
-    <h2 class="card-title"><%=post.title%></h2>
-    <p><%=post.body%></p>
-    <p><%=post.user.name%></p>
+<div class="card w-full bg-base-100 shadow-xl mb-8">
+  <% if post.image.attached? %>
+  <figure><%= image_tag post.image.variant(resize_to_fill: [500,225]) %></figure>
+  <% end %>
+  <div class="card-body">
+    <h1 class="card-title pb-8"><%=post.title%></h1>
+    <h2 class="font-bold text-lg">場所</h2>
+    <p class="py-4 pl-3 text-base"><%=post.place%></p>
+    <h2 class="font-bold text-lg">日時</h2>
+    <p class="py-4 pl-3 text-base"><%=post.date%></p>
+    <h2 class="font-bold text-lg">対象</h2>
+    <p class="py-4 pl-3 text-base"><%=post.target%></p>
+    <h2 class="font-bold text-lg">詳細</h2>
+    <p class="py-4 pl-3 text-base"><%=safe_join(post.body.split("\n"),tag(:br))%></p>
+    <h2 class="font-bold text-lg">URL</h2>
+    <p class="p-4 text-base"><%= raw Rinku.auto_link(h("#{post.url}")) %></p>
+    <div class="card-actions justify-end">
+      <%= link_to 'クエストをキャンセルする', quest_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
+    </div>
   </div>
 </div>

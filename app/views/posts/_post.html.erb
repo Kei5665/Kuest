@@ -1,25 +1,31 @@
 <input type="checkbox" id="my-modal-<%=post.id%>" class="modal-toggle" />
 <div class="modal" id="my-modal-<%=post.id%>">
   <div class="modal-box">
-    <% if post.image.attached? %>
-      <%= image_tag post.image.variant(resize_to_fill: [400,400]) %>
-    <% end %>
-    <h3 class="font-bold text-lg"><%=post.title%></h3>
-    <h3 class="font-bold text-lg">場所</h3>
-    <p class="py-4"><%=post.place%></p>
-    <h3 class="font-bold text-lg">日時</h3>
-    <p class="py-4"><%=post.date%></p>
-    <h3 class="font-bold text-lg">対象</h3>
-    <p class="py-4"><%=post.target%></p>
-    <h3 class="font-bold text-lg">詳細</h3>
-    <p class="py-4"><%=post.body%></p>
-    <h3 class="font-bold text-lg">URL</h3>
-    <p><%= raw Rinku.auto_link(h("#{post.url}")) %></p>
-    <% if current_user %>
-      <%= link_to 'クエストに出かける', quests_path(id: post.id), data: { turbo_method: :post }, class: 'btn btn-primary' %>
-    <% else %>
-      <%= link_to 'ログインしてクエストに出かける', auth_at_provider_path(provider: :google), class: "btn btn-primary"%>
-    <% end %>
-    <label for="my-modal-<%=post.id%>" class="btn">閉じる</label>
+    <div class="card w-full bg-base-100 shadow-xl">
+      <% if post.image.attached? %>
+      <figure><%= image_tag post.image.variant(resize_to_fill: [500,225]) %></figure>
+      <% end %>
+      <div class="card-body">
+        <h1 class="card-title pb-8"><%=post.title%></h1>
+        <h2 class="font-bold text-lg">場所</h2>
+        <p class="py-4 pl-3 text-base"><%=post.place%></p>
+        <h2 class="font-bold text-lg">日時</h2>
+        <p class="py-4 pl-3 text-base"><%=post.date%></p>
+        <h2 class="font-bold text-lg">対象</h2>
+        <p class="py-4 pl-3 text-base"><%=post.target%></p>
+        <h2 class="font-bold text-lg">詳細</h2>
+        <p class="py-4 pl-3 text-base"><%=safe_join(post.body.split("\n"),tag(:br))%></p>
+        <h2 class="font-bold text-lg">URL</h2>
+        <p class="p-4"><%= raw Rinku.auto_link(h("#{post.url}")) %></p>
+        <div class="card-actions justify-end">
+          <% if current_user %>
+            <%= link_to 'クエストに出かける', quests_path(id: post.id), data: { turbo_method: :post }, class: 'btn btn-primary' %>
+          <% else %>
+            <%= link_to 'ログインしてクエストに出かける', auth_at_provider_path(provider: :google), class: "btn btn-primary"%>
+          <% end %>
+          <label for="my-modal-<%=post.id%>" class="btn">閉じる</label>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
