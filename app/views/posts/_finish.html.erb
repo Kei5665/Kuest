@@ -1,8 +1,19 @@
 <div class="card card-compact bg-base-100 shadow-xl my-5">
   <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
   <div class="card-body object-contain">
-    <h2 class="card-title"><%=post.title%></h2>
-    <p><%=post.body%></p>
-    <p><%=post.user.name%></p>
+    <% if post.image.attached? %>
+      <%= image_tag post.image %>
+    <% end %>
+    <h3 class="font-bold text-lg"><%=post.title%></h3>
+    <h3 class="font-bold text-lg">場所</h3>
+    <p class="py-4"><%=post.place%></p>
+    <h3 class="font-bold text-lg">日時</h3>
+    <p class="py-4"><%=post.date%></p>
+    <h3 class="font-bold text-lg">対象</h3>
+    <p class="py-4"><%=post.target%></p>
+    <h3 class="font-bold text-lg">詳細</h3>
+    <p class="py-4"><%=post.body%></p>
+    <h3 class="font-bold text-lg">URL</h3>
+    <p><%= raw Rinku.auto_link(h("#{post.url}")) %></p>
   </div>
 </div>
