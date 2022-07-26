@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get :stamped
     end
   end
-  resources :stamps do
+  resources :quests do
     member do
       get :set
     end
