@@ -18,7 +18,7 @@ class QuestsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    quest = current_user.ordered_quests.find_by(post_id: post.id)
+    quest = current_user.quests.find_by(post_id: post.id)
     quest.destroy!
     redirect_to quests_path, success: "クエストをキャンセルしました！"  
   end

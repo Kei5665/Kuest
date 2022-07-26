@@ -15,9 +15,9 @@
     <p class="py-4"><%=post.body%></p>
     <h3 class="font-bold text-lg">URL</h3>
     <p><%= raw Rinku.auto_link(h("#{post.url}")) %></p>
-    <%= link_to 'クエストをキャンセルする', stamp_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
+    <%= link_to 'クエストをキャンセルする', quest_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
     <button class="btn btn-warning" id="<%=post.id%>" value="<%=post.latlng%>" onclick="calculateDistance(this.value,this.id)">完了する</button>
-    <%= link_to 'クエストクリア！', stamped_post_path(id: post.id),id: "#{post.id}-stamp", class: 'btn btn-success disable' %>
+    <%= link_to 'クエストクリア！', clear_quest_path(id: post.id),id: "#{post.id}-stamp", class: 'btn btn-success disable' %>
 
     <label for="my-modal-<%=post.id%>" class="btn">閉じる</label>
   </div>
