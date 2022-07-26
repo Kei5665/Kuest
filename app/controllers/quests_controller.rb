@@ -6,7 +6,7 @@ class QuestsController < ApplicationController
     gon.json = @posts.to_json
   end
 
-  def set
+  def create
     post = Post.find(params[:id])
     if current_user.ordered_quests.include?(post)
       redirect_to root_path, warning: "このクエストは受注済みです"  
@@ -21,5 +21,12 @@ class QuestsController < ApplicationController
     quest = current_user.stamps.find_by(post_id: post.id)
     quest.destroy!
     redirect_to quests_path, success: "クエストをキャンセルしました！"  
+  end
+
+  def clear
+    quest = current_user.quests.find_by(post_id: params[:id])
+    quest.quest_cleared = true
+    quest.save!
+    redirect_to root_path, success: "クエストを完了しました！"
   end
 end
