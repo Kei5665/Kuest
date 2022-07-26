@@ -9,15 +9,10 @@ Rails.application.routes.draw do
   namespace :admin do 
     resources :posts, only: %i[index create destroy]
   end
-  
-  resources :posts, only: %i[index create show destroy] do
+  resources :posts, only: %i[index create show destroy]
+  resources :quests do
     member do
-      get :stamped
-    end
-  end
-  resources :stamps do
-    member do
-      get :set
+      get :clear
     end
   end
   resources :users, only: %i[edit update]

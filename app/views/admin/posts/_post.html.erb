@@ -15,7 +15,7 @@
     <p class="py-4"><%=post.body%></p>
     <h3 class="font-bold text-lg">URL</h3>
     <p><%= raw Rinku.auto_link(h("#{post.url}")) %></p>
-    <%= link_to '削除', post_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
+    <%= link_to '削除', admin_post_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
     <label for="my-modal-<%=post.id%>" class="btn">閉じる</label>
   </div>
 </div>

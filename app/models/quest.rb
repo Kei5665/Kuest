@@ -1,4 +1,4 @@
-class Stamp < ApplicationRecord
+class Quest < ApplicationRecord
   belongs_to :user
   belongs_to :post
 end
