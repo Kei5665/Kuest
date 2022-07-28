@@ -4,6 +4,7 @@ class QuestsController < ApplicationController
   def index
     @posts = current_user.posts.joins(:quests).where(quests: {quest_cleared: false})
     gon.json = @posts.to_json
+    @finished_quests = current_user.posts.joins(:quests).where(quests: {quest_cleared: true})
   end
 
   def create
