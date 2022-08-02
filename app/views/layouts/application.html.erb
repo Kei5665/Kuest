@@ -10,6 +10,9 @@
     <%= include_gon %>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.17.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">
     <%= javascript_importmap_tags %>
 
     <style>
@@ -23,6 +26,13 @@
         margin: 0;
         padding: 0;
       }
+      p,h1,h2,button {
+        font-family: 'Reggae One', cursive;
+      }
+      .table td,
+      .table th {
+        background:none;
+      }
       .gm-style .gm-style-iw-c {
         padding:0;
       }
@@ -31,6 +41,19 @@
       }
       .disable {
         display:none;
+      }
+      .modal-box {
+        background-image: url("<%= asset_path('paper.jpeg') %>");
+        background-size:cover;
+        background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
+        border: 5px solid #73301C;
+        box-shadow: 1px 1px 3px #999;
+      }
+      .card {
+        background:rgba(0, 0, 0, 0.3);
+      }
+      .www {
+        background:rgba(0, 0, 0, 0.3);
       }
     </style>
     </head>
