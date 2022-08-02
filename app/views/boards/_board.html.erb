@@ -1,0 +1,16 @@
+<div class="card w-full indicator bg-base-100 shadow-xl mb-8">
+  <div class="card-body flex flex-row">
+    <div class="flex-none">
+      <button class="btn font-mono text-base rounded-box px-1 py-0">開催予定</button>
+    </div>
+    <div class="grow">
+      <h1 class="card-title text-white text-2xl mb-4"><%=post.title%></h1>
+    </div>
+    <div class="flex-none">
+      <button class="btn btn-warning text-white text-xl px-2"><p>行く!</p></button>
+    </div>
+  </div>
+  <span class="indicator-item indicator-bottom indicator-center badge badge-warning text-black p-4 w-4/5 mb-3">
+    獲得コイン：<%= image_tag 'coin.png', size: '25x25' %> × 5000
+  </span>
+</div>

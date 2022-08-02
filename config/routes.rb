@@ -16,4 +16,5 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: %i[edit update]
+  resources :boards
 end
