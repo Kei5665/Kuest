@@ -2,6 +2,8 @@
 
 <%= render 'quests/bottom_nav'%>
 
+<%= render 'quests/nav'%>
+
 <%= render partial: 'quests/post', collection: @posts %>
 
     <script>
@@ -59,6 +61,7 @@
         handleLocationError(false, infoWindow, map.getCenter());
       }
     map.controls[google.maps.ControlPosition.BOTTOM].push(document.getElementById('bar2'));
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById('bar3'));
       // 投稿データをマーカーに代入する
       for (var i = 0; i < jdata.length; i++) {
         // 投稿ごとの緯度経度
@@ -70,7 +73,7 @@
         });
         // 情報ウィンドウには投稿情報モーダルへのリンクを入れる
         infoWindow[i] = new google.maps.InfoWindow({
-          content: '<div class=show-btn>'+'<h2 class="font-bold text-lg">'+jdata[i]["title"]+'</h2>'+'<label for="my-modal-'+jdata[i]["id"]+'" class="btn btn-warning modal-button-'+jdata[i]["id"]+' mb-4">詳細をみる</label>'+'</div>'
+          content: '<div class=show-btn>'+'<h2 class="font-bold text-lg">'+jdata[i]["title"]+'</h2>'+'<label for="my-modal-'+jdata[i]["id"]+'" class="btn btn-warning modal-button-'+jdata[i]["id"]+' mb-4 w-full">詳細をみる</label>'+'</div>'
         });
         // マーカー毎にクリックイベントを追加
         markerEvent(i);
