@@ -7,7 +7,7 @@
       <h1 class="card-title text-white text-2xl mb-4"><%=post.title%></h1>
     </div>
     <div class="flex-none">
-      <button class="btn btn-warning text-white text-xl px-2"><p>行く!</p></button>
+      <%= link_to "詳細", board_path(post), class: "btn btn-warning text-white text-xl px-2"%>
     </div>
   </div>
   <span class="indicator-item indicator-bottom indicator-center badge badge-warning text-black p-4 w-4/5 mb-3">
