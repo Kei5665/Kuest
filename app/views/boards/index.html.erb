@@ -3,5 +3,7 @@
   <div class="max-w-lg mx-auto">
     <%= render partial: 'board', collection: @posts, as: 'post' %>
   </div>
-  <button class="btn">クエスト中画面へ</button>
+  <% if current_user %>
+    <%= link_to "クエスト中画面へ", quests_path, class: "btn"%>
+  <%end%>
 </section>
