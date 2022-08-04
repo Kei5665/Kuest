@@ -25,9 +25,9 @@ class QuestsController < ApplicationController
   end
 
   def clear
+    @post = current_user.ordered_quests.find(params[:id])
     quest = current_user.quests.find_by(post_id: params[:id])
     quest.quest_cleared = true
     quest.save!
-    redirect_to root_path, success: "クエストを完了しました！"
   end
 end

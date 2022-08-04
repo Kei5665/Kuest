@@ -1,0 +1,8 @@
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="my-modal-users" class="modal-toggle" />
+<label for="my-modal-users" class="modal cursor-pointer">
+  <label class="modal-box relative" for="">
+    <%= link_to "ユーザー名編集", edit_user_path(current_user), class: "btn"%>
+    <%= render 'quests/finishes'%>
+  </label>
+</label>

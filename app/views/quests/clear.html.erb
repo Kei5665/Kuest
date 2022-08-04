@@ -1,0 +1,48 @@
+<section class="select-sec">
+  <h1 class="text-3xl text-center mb-4 text-white text-bold">区エストクリア!!</h1>
+  <div class="max-w-lg mx-auto">
+    <h1 class="text-3xl text-center text-white mb-4"><%=@post.title%></h1>
+    <div class="stats shadow">
+      
+      <div class="stat">
+        <div class="stat-figure text-primary">
+          <%= image_tag 'coin.png', size: '100x100' %>
+        </div>
+        <div class="stat-title">獲得コイン</div>
+        <div class="stat-value text-primary">25.6K</div>
+        <div class="stat-desc">累計コイン</div>
+      </div>
+      
+    </div>
+        <div class="grid grid-cols-5 gap-4 mb-4">
+      <% if @post.image.attached? %>
+        <%= image_tag @post.image.variant(resize: "200x200>"),class: "col-span-2 rounded-xl self-center" %>
+      <% end %>
+      <div class="overflow-x-auto col-span-3">
+        <table class="table w-full">
+          <tbody>
+            <!-- row 1 -->
+            <tr>
+              <th>場所</th>
+              <td><%=@post.place%></td>
+            </tr>
+            <!-- row 2 -->
+            <tr>
+              <th>日時</th>
+              <td><%=@post.date%></td>
+            </tr>
+            <!-- row 3 -->
+            <tr>
+              <th>対象</th>
+              <td><%=@post.target%></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="www rounded mb-4">
+      <p class="py-4 pl-3 text-white"><%=safe_join(@post.body.split("\n"),tag(:br))%></p>
+    </div>
+    <%= link_to 'クエスト一覧へ', boards_path, class: "btn"%>
+  </div>
+</section>
