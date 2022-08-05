@@ -17,10 +17,11 @@ class Scraping
     price_page = agent.get(url + "price.html")
 
     p "タイトル: #{detail_page.at('.m-detailheader-heading__ttl')&.inner_text}"
-    p "開催場所: #{detail_page.search('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[1]/td')&.inner_text.gsub(/[\r\n]/,"").gsub(" ", "")}"
+    p "開催場所: #{detail_page.search('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[1]/td')&.inner_text.gsub(/[\r\n]/,"").gsub(" ", "").delete("[地図]")}"
     p "開催日: #{detail_page.search('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[3]/td')&.inner_text.gsub(/[\r\n]/,"").gsub(" ", "")}"
     p "開催時間: #{detail_page.search('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[4]/td')&.inner_text.gsub(/[\r\n]/,"").gsub(" ", "")}"
     p "住所: #{detail_page.search('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[7]/td')&.inner_text}"
     p "金額: #{price_page.at('.m-infotable__td')&.inner_text}"
+
   end
 end
