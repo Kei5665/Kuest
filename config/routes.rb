@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'log_out', to: 'user_sessions#destroy', as: 'log_out'
 
   namespace :admin do 
-    resources :posts, only: %i[index create destroy]
+    resources :posts
   end
   resources :posts, only: %i[index create show destroy]
   resources :quests do
