@@ -1,0 +1,26 @@
+<%= form_with model: @post, url: admin_post_path(@post),class:'new_post',local: true do |f|%>
+<turbo-frame id="post_error"></turbo-frame>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :place %>
+    <%= f.text_field :place,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :date %>
+    <%= f.text_field :date,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :time %>
+    <%= f.text_field :time,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :price %>
+    <%= f.text_field :price,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :address %>
+    <%= f.text_field :address,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :body %>
+    <%= f.text_area :body,class:'textarea textarea-warning w-full', rows: 5  %>
+    <%= f.label :url %>
+    <%= f.text_field :url,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :latlng %>
+    <%= f.text_field :latlng,class:'input input-bordered input-warning w-full', id: 'latlng' %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <%= f.submit class:'btn btn-warning'%>
+<%end%>
