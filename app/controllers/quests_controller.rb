@@ -2,9 +2,9 @@ class QuestsController < ApplicationController
   before_action :require_login, only: %i[index]
 
   def index
-    @posts = current_user.posts.joins(:quests).where(quests: {quest_cleared: false})
+    @posts = current_user.ordered_quests.joins(:quests).where(quests: {quest_cleared: false})
     gon.json = @posts.to_json
-    @finished_quests = current_user.posts.joins(:quests).where(quests: {quest_cleared: true})
+    @finished_quests = current_user.ordered_quests.joins(:quests).where(quests: {quest_cleared: true})
   end
 
   def create
