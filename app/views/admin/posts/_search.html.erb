@@ -3,6 +3,10 @@
     <label class="input-group">
       <span class="btn btn-warning">⭐︎区エスト⭐︎</span>
       <input type="text" id="autoc" class="input input-bordered"/>
+      <%= form_with model: @post, url: admin_posts_path,class:'new_post',local: true do |f|%>
+        <%= f.text_field :page_number,class:'input input-bordered input-warning' %>
+        <%= f.submit class:'btn'%>
+      <%end%>
     </label>
   </div>
 </div>

@@ -38,6 +38,10 @@ class Admin::PostsController < ApplicationController
     redirect_to admin_posts_path, success: "削除に成功しました！"
   end
 
+  def scrape
+    Scraping.new(id:params[:id])
+  end
+
   private
 
   def post_params
