@@ -2,6 +2,8 @@ class Scraping
   require 'mechanize'
 
   agent = Mechanize.new
+  # page = agent.get("https://tokyoeast21.net/category/taito/")
+  # elements = page.search('//*[@id="contentInner"]/main/article/div[2]/dl/dt/a')
   page = agent.get("https://www.walkerplus.com/event_list/ar0313106/taito/")
   elements = page.search('.m-mainlist-item__img')
   urls = []
@@ -11,7 +13,17 @@ class Scraping
     urls << ele.get_attribute(:href)
   end
 
-  # 抽出した詳細ページURLにアクセスし、データ取得
+  # 東東京イベント情報
+  # urls.each do |url|
+
+  #   page = agent.get(url)
+  #   title = page.at('.entry-title')&.inner_text
+
+  #   src = page.search('.wp-block-image').at('img')['src'] # 商品画像
+  #   puts src
+  #   agent.get(src).save_as("../app/public/images/#{title}.jpg") # 保存する
+  # end
+  # walker plus
   urls.each do |url|
 
     page = agent.get(url)
@@ -25,6 +37,8 @@ class Scraping
     address = detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[7]/td')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")
     price = price_page.at('.m-infotable__td')&.inner_text
     body = page.search('/html/body/div[1]/div[1]/main/section[1]/div[3]/div[2]/div[2]/p')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")
+    src = page.at('.m-detailmain__slide_item img[1]').get_attribute(:src)
+    image = "https:" + src
 
     p "#{detail_page.at('.m-detailheader-heading__ttl')&.inner_text}"
     p "#{detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[1]/td')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")&.delete("[地図]")}"
@@ -33,6 +47,7 @@ class Scraping
     p "#{detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[7]/td')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")}"
     p "#{price_page.at('.m-infotable__td')&.inner_text}"
     p "#{page.search('/html/body/div[1]/div[1]/main/section[1]/div[3]/div[2]/div[2]/p')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")}"
+    p "#{page.at('.m-detailmain__slide_item img[1]')}"
 
     post = Post.new
     post.title = title
@@ -42,6 +57,9 @@ class Scraping
     post.address = address
     post.price = price
     post.body = body
-    post.save!
+    downloaded_image = URI.parse(image).open
+    post.image.attach(io: downloaded_image, filename: "#{title}.jpg")
+    post.save
+    binding.pry
   end
 end
