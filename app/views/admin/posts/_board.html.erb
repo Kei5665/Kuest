@@ -9,6 +9,7 @@
     </div>
   </div>
   <%= link_to "編集", edit_admin_post_path(post), class: "btn btn-primary"%>
+  <%= link_to '削除', admin_post_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
   <span class="indicator-item indicator-bottom indicator-center badge badge-warning text-black p-4 w-4/5 mb-3">
     獲得コイン：<%= image_tag 'coin.png', size: '25x25' %> × 5000
   </span>
