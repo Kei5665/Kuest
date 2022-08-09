@@ -4,5 +4,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :authentications
   has_many :quests, dependent: :destroy
   has_many :ordered_quests, through: :quests, source: :post
+  has_many :emblems, dependent: :destroy
 
 end
