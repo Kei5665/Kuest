@@ -18,15 +18,33 @@ class Admin::PostsController < ApplicationController
     end
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to admin_posts_path, success: "更新成功しました"
+    else
+      redirect_to admin_posts_path, danger: "更新失敗しました"
+      render :new
+    end
+  end
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy!
     redirect_to admin_posts_path, success: "削除に成功しました！"
   end
 
+  def scrape
+    Scraping.new(id:params[:id])
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :latlng, :image, :place, :date, :target, :url)
+    params.require(:post).permit(:title, :body, :latlng, :image, :place, :date, :target, :url, :time, :price, :address)
   end
 end

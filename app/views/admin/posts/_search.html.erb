@@ -1,8 +1,9 @@
-<div id="bar">
   <div class="form-control">
-    <label class="input-group">
-      <span class="btn btn-warning">⭐︎区エスト⭐︎</span>
-      <input type="text" id="autoc" class="input input-bordered"/>
-    </label>
+      <%= form_with url: admin_scrapes_path,local: true do |f|%>
+        <label class="input-group">
+          <span class="btn btn-warning">⭐︎区エスト⭐︎</span>
+          <%= f.text_field :page_number,class:'input input-bordered input-warning' %>
+          <%= f.submit class:'btn'%>
+        </label>
+      <%end%>
   </div>
-</div>
