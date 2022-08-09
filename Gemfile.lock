@@ -168,7 +168,6 @@ GEM
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (2.0.3)
     ffi (1.15.5)
-    geocoder (1.8.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     gon (6.4.0)
@@ -176,19 +175,12 @@ GEM
       i18n (>= 0.7)
       multi_json
       request_store (>= 1.0)
-    google-maps (3.0.7)
-      hashie (~> 4.1, >= 4.1.0)
-      httpclient (~> 2.7, >= 2.7.1)
-      multi_json (>= 1.15)
-      ruby-hmac (~> 0.4.0)
     google_maps_service (0.4.2)
       hurley (~> 0.1)
       multi_json (~> 1.11)
       retriable (~> 2.0)
-    hashie (4.1.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
-    httpclient (2.8.3)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -330,7 +322,6 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.0)
-    ruby-hmac (0.4.0)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
@@ -398,9 +389,7 @@ DEPENDENCIES
   debug
   dotenv-rails
   factory_bot_rails
-  geocoder
   gon
-  google-maps
   google_maps_service
   hurley!
   image_processing (~> 1.2)
