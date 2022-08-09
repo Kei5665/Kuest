@@ -1,5 +1,8 @@
 class Scraping
   require 'mechanize'
+  require 'google_maps_service'
+
+  gmap = GoogleMapsService::Client.new(key: ENV['GOOGLE_API_KEY'])
 
   agent = Mechanize.new
   # page = agent.get("https://tokyoeast21.net/category/taito/")
@@ -34,7 +37,7 @@ class Scraping
     place = detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[1]/td')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")&.delete("[地図]")
     date = detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[3]/td')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")
     time = detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[4]/td')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")
-    address = detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[7]/td')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")
+    address = detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[7]/td')&.inner_text
     price = price_page.at('.m-infotable__td')&.inner_text
     body = page.search('/html/body/div[1]/div[1]/main/section[1]/div[3]/div[2]/div[2]/p')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")
     src = page.at('.m-detailmain__slide_item img[1]').get_attribute(:src)
@@ -53,13 +56,21 @@ class Scraping
     post.title = title
     post.place = place
     post.date = date
-    post.time = time
     post.address = address
+    post.time = time
     post.price = price
     post.body = body
     downloaded_image = URI.parse(image).open
     post.image.attach(io: downloaded_image, filename: "#{title}.jpg")
+
+    if address.present?
+      comp = gmap.geocode(address)
+      post.latlng = comp[0][:geometry][:location]
+    end
+
     post.save
-    binding.pry
+
+    sleep(1)
+
   end
 end

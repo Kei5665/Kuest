@@ -58,6 +58,8 @@ gem 'config'
 gem 'rinku'
 gem 'mini_magick'
 gem 'mechanize'
+gem 'google_maps_service'
+gem 'hurley', :git => "https://github.com/AkermanisM/hurley.git"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

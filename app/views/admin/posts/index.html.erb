@@ -39,22 +39,22 @@
       };
     });
 
-    // 投稿データをマーカーに代入する
-    for (var i = 0; i < jdata.length; i++) {
-      // 投稿ごとの緯度経度
-      markerLatLng = {lat: JSON.parse(jdata[i]['latlng'])['lat'], lng: JSON.parse(jdata[i]['latlng'])['lng']};
-      // マーカーに投稿ごとの緯度経度を代入
-      marker[i] = new google.maps.Marker({
-        position: markerLatLng,
-        map: map
-      });
-      // 情報ウィンドウには投稿情報モーダルへのリンクを入れる
-      infoWindow[i] = new google.maps.InfoWindow({
-        content: '<div class=show-btn>'+'<h2 class="font-bold text-lg">'+jdata[i]["title"]+'</h2>'+'<label for="my-modal-'+jdata[i]["id"]+'" class="w-full btn btn-warning modal-button-'+jdata[i]["id"]+' mb-4">詳細をみる</label>'+'</div>'
-      });
-      // マーカー毎にクリックイベントを追加
-      markerEvent(i);
-    }
+    // // 投稿データをマーカーに代入する
+    // for (var i = 0; i < jdata.length; i++) {
+    //   // 投稿ごとの緯度経度
+    //   markerLatLng = {lat: JSON.parse(jdata[i]['latlng'])['lat'], lng: JSON.parse(jdata[i]['latlng'])['lng']};
+    //   // マーカーに投稿ごとの緯度経度を代入
+    //   marker[i] = new google.maps.Marker({
+    //     position: markerLatLng,
+    //     map: map
+    //   });
+    //   // 情報ウィンドウには投稿情報モーダルへのリンクを入れる
+    //   infoWindow[i] = new google.maps.InfoWindow({
+    //     content: '<div class=show-btn>'+'<h2 class="font-bold text-lg">'+jdata[i]["title"]+'</h2>'+'<label for="my-modal-'+jdata[i]["id"]+'" class="w-full btn btn-warning modal-button-'+jdata[i]["id"]+' mb-4">詳細をみる</label>'+'</div>'
+    //   });
+    //   // マーカー毎にクリックイベントを追加
+    //   markerEvent(i);
+    // }
 
     // マーカーがクリックされたら投稿情報へのリンクを表示させる
     function markerEvent(i) {
