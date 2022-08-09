@@ -69,16 +69,12 @@ class Scraping
       if address.present? && gmap.geocode(address).present?
         comp = gmap.geocode(address)
         post.latlng = comp[0][:geometry][:location]
-      end
-
-      if post.valid?
         post.save
+        sleep(1)
       else
         next
       end
-
-      sleep(1)
+      
     end
-
   end
 end
