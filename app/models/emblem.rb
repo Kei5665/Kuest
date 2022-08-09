@@ -1,0 +1,2 @@
+class Emblem < ApplicationRecord
+end
