@@ -71,7 +71,11 @@ class Scraping
         post.latlng = comp[0][:geometry][:location]
       end
 
-      post.save
+      if post.save.valid?
+        post.save
+      else
+        next
+      end
 
       sleep(1)
     end
