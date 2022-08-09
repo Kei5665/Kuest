@@ -13,7 +13,7 @@
       let marker = [];
       let jdata = JSON.parse(gon.json);
       let infoWindow = [];
-
+      
       // 初期位置
       const Tokyo = { lat: 35.681427904704975, lng: 139.76717844133614 };
       const map = new google.maps.Map(document.getElementById("map"), {
@@ -65,7 +65,7 @@
       // 投稿データをマーカーに代入する
       for (var i = 0; i < jdata.length; i++) {
         // 投稿ごとの緯度経度
-        markerLatLng = {lat: JSON.parse(jdata[i]['latlng'])['lat'], lng: JSON.parse(jdata[i]['latlng'])['lng']};
+        markerLatLng = {lat: jdata[i]['latlng']['lat'], lng: jdata[i]['latlng']['lng']};
         // マーカーに投稿ごとの緯度経度を代入
         marker[i] = new google.maps.Marker({
           position: markerLatLng,
@@ -89,7 +89,14 @@
 
     // 現在位置とスタンプの距離をはかる
     function calculateDistance(latlng,id){
-      let stampPosition = JSON.parse(latlng)
+      json_latlng = JSON.parse(latlng)
+
+      let stampPosition = {
+            lat: json_latlng["lat"],
+            lng: json_latlng["lng"],
+          };
+
+      console.log(stampPosition);
       let calculateBtnId = id
       let stampBtnId = id + "-stamp";
       let stampValidate = document.getElementById('stamp_validate');
