@@ -66,7 +66,7 @@ class Scraping
       downloaded_image = URI.parse(image).open
       post.image.attach(io: downloaded_image, filename: "#{title}.jpg")
 
-      if gmap.geocode(address).present?
+      if address.present? && gmap.geocode(address).present?
         comp = gmap.geocode(address)
         post.latlng = comp[0][:geometry][:location]
       end
