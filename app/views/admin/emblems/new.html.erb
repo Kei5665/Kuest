@@ -1,0 +1,11 @@
+<%= form_with model: @emblem, url: admin_emblems_path, local: true do |f|%>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :limit_num %>
+    <%= f.number_field :limit_num,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :emblem_image %>
+    <%= f.file_field :emblem_image %>
+  </div>
+  <%= f.submit class:'btn btn-warning'%>
+<%end%>
