@@ -8,13 +8,13 @@
         <div class="stat-figure text-primary">
           <%= image_tag 'coin.png', size: '100x100' %>
         </div>
-        <div class="stat-title">獲得コイン</div>
+        <div class="stat-title">獲得エンブレム</div>
         <div class="stat-value text-primary">25.6K</div>
-        <div class="stat-desc">累計コイン</div>
+        <div class="stat-desc">累計クリア回数</div>
       </div>
       
     </div>
-        <div class="grid grid-cols-5 gap-4 mb-4">
+    <div class="grid grid-cols-5 gap-4 mb-4">
       <% if @post.image.attached? %>
         <%= image_tag @post.image.variant(resize: "200x200>"),class: "col-span-2 rounded-xl self-center" %>
       <% end %>
