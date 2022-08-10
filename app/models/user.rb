@@ -20,8 +20,8 @@ class User < ApplicationRecord
       self.user_emblems.build(emblem_id: intermediate.id)
     elsif clear_num == 5
       self.user_emblems.build(emblem_id: advanced.id)
-    elsif
-      return
+    else
+      return 
     end
   end
 end

@@ -29,5 +29,8 @@ class QuestsController < ApplicationController
     quest = current_user.quests.find_by(post_id: params[:id])
     quest.quest_cleared = true
     quest.save!
+
+    clear_num = current_user.clear_num += 1
+    current_user.select_emblem(clear_num).
   end
 end
