@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :admin do 
     resources :posts
     resources :scrapes, only: %i[create]
+    resources :emblems, only: %i[index create new]
   end
   resources :posts, only: %i[index create show destroy]
   resources :quests do
