@@ -15,11 +15,11 @@ class User < ApplicationRecord
     advanced = Emblem.last
 
     if  clear_num == 1
-      self.user_emblems.build(emblem_id: begginer.id)
+      self.user_emblems.create(emblem_id: begginer.id)
     elsif clear_num == 3
-      self.user_emblems.build(emblem_id: intermediate.id)
+      self.user_emblems.create(emblem_id: intermediate.id)
     elsif clear_num == 5
-      self.user_emblems.build(emblem_id: advanced.id)
+      self.user_emblems.create(emblem_id: advanced.id)
     else
       return 
     end

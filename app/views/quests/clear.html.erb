@@ -6,11 +6,13 @@
       
       <div class="stat">
         <div class="stat-figure text-primary">
-          <%= image_tag 'coin.png', size: '100x100' %>
+      <% if @current_emblem.emblem_image.attached? %>
+        <%= image_tag @current_emblem.emblem_image.variant(resize: "200x200>"),class: "col-span-2 rounded-xl self-center" %>
+      <% end %>
         </div>
         <div class="stat-title">獲得エンブレム</div>
-        <div class="stat-value text-primary">25.6K</div>
-        <div class="stat-desc">累計クリア回数</div>
+        <div class="stat-value text-primary"><%= @current_emblem.name %></div>
+        <div class="stat-desc">次のエンブレムまであと</div>
       </div>
       
     </div>
