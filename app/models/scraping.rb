@@ -2,13 +2,13 @@ class Scraping
   require 'mechanize'
   require 'google_maps_service'
 
-  def scrape(page_num,erea_name)
+  def scrape(page_num,area_name)
 
 
     gmap = GoogleMapsService::Client.new(key: ENV['GOOGLE_API_KEY'])
 
     agent = Mechanize.new
-    page = agent.get("https://www.walkerplus.com/event_list/ar0313106/#{erea_name}/#{page_num}.html")
+    page = agent.get("https://www.walkerplus.com/event_list/ar0313106/#{area_name}/#{page_num}.html")
     elements = page.search('.m-mainlist-item__img')
     urls = []
 
