@@ -1,0 +1,26 @@
+<tbody class="bg-quest" >
+  <tr>
+    <th>
+      <%= link_to "編集", edit_admin_post_path(post), class: "btn btn-primary"%>
+      <%= link_to '削除', admin_post_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
+    </th>
+    <td>
+      <div class="mask mask-squircle w-12 h-12">
+        <% if post.image.attached? %>
+          <%= image_tag post.image,class: "col-span-2 rounded-xl self-center" %>
+        <% end %>
+      </div>
+    </td>
+    <td>
+    <p>タイトル：<%= post.title %></p>
+    <p>本文：<%= post.body.truncate(30)  %></p>
+    <p>日にち：<%= post.date %></p>
+    <p>時間：<%= post.time %></p>
+    <p>金額：<%= post.price %></p>
+    <p>場所：<%= post.place %></p>
+    <p>座標：<%= post.latlng %></p>
+    <p>住所：<%= post.address %></p>
+    <p>エリア：<%= post.area_id %></p>
+    </td>
+  </tr>
+</tbody>

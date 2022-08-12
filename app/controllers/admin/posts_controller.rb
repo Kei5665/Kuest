@@ -1,8 +1,6 @@
 class Admin::PostsController < ApplicationController
   def index
-    @post = Post.new
     @posts = Post.all
-    gon.json = @posts.to_json
   end
   
   def create
@@ -10,11 +8,8 @@ class Admin::PostsController < ApplicationController
     if @post.save
       redirect_to admin_posts_path, success: "投稿に成功しました！"
     else
-      render turbo_stream: turbo_stream.replace(
-        'post_error',
-        partial: 'shared/error_messages',
-        locals: { object: @post },
-      )
+      flash.now[:error] = "投稿に失敗しました"
+      render :new
     end
   end
 
