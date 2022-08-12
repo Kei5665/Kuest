@@ -2,7 +2,7 @@
   <h1 class="text-3xl text-center mb-4 text-white text-bold">区エストクリア!!</h1>
   <div class="max-w-lg mx-auto">
     <h1 class="text-3xl text-center text-white mb-4"><%=@post.title%></h1>
-    <div class="stats shadow">
+    <div class="stats shadow text">
       
       <div class="stat">
         <div class="stat-figure text-primary">
@@ -45,6 +45,6 @@
     <div class="www rounded mb-4">
       <p class="py-4 pl-3 text-white"><%=safe_join(@post.body.split("\n"),tag(:br))%></p>
     </div>
-    <%= link_to 'クエスト一覧へ', boards_path, class: "btn"%>
+    <%= link_to '区エスト一覧へ', root_path, class: "btn"%>
   </div>
 </section>
