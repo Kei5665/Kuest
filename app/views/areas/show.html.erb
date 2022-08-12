@@ -1,7 +1,7 @@
 <section class="select-sec overflow-y-auto h-full">
   <h1 class="text-2xl text-center">区エスト一覧</h1>
   <div class="grid grid-cols-3 md:grid-cols-5 gap-4 container mx-auto">
-    <%= render partial: 'board', collection: @posts, as: 'post' %>
+    <%= render partial: 'post', collection: @posts, as: 'post' %>
   </div>
   <% if current_user %>
     <%= link_to "クエスト中画面へ", quests_path, class: "btn"%>

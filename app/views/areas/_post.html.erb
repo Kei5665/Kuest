@@ -1,4 +1,4 @@
-<%= link_to board_path(post) do%>
+<%= link_to post_path(post) do%>
 <div class="card">
   <% if post.image.attached? %>
     <figure><%= image_tag post.image.variant(resize: "300x300^", gravity: "center", crop: "300x300+0+0"), class: "rounded-xl shadow-lg" %></figure>

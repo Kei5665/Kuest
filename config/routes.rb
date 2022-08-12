@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'boards#index'
+  root 'areas#index'
 
   post "oauth/callback", to: "oauths#callback"
   get "oauth/callback", to: "oauths#callback"
@@ -12,13 +12,12 @@ Rails.application.routes.draw do
     resources :emblems, only: %i[index create new]
     resources :areas, only: %i[index create new]
   end
-  resources :posts, only: %i[index create show destroy]
   resources :quests do
     member do
       get :clear
     end
   end
+  resources :posts
   resources :users, only: %i[edit update]
-  resources :boards
   resources :areas
 end
