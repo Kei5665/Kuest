@@ -1,50 +1,9 @@
-<div id="map"></div>
-
-<%= render 'posts/bottom_nav'%>
-
-<%= render partial: 'posts/post', collection: @posts %>
-
-<%= render 'shared/footer'%>
-
-<script>
-
-  let marker = [];
-  let jdata = JSON.parse(gon.json);
-  let infoWindow = [];
-
-  function initMap() {
-    // 初期位置
-    const Tokyo = { lat: 35.681427904704975, lng: 139.76717844133614 };
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 15,
-      center: Tokyo,
-      disableDefaultUI: true,
-      gestureHandling: 'greedy',
-    });
-    map.controls[google.maps.ControlPosition.BOTTOM].push(document.getElementById('bar2'));
-    // 投稿データをマーカーに代入する
-    for (var i = 0; i < jdata.length; i++) {
-      // 投稿ごとの緯度経度
-      markerLatLng = {lat: JSON.parse(jdata[i]['latlng'])['lat'], lng: JSON.parse(jdata[i]['latlng'])['lng']};
-      // マーカーに投稿ごとの緯度経度を代入
-      marker[i] = new google.maps.Marker({
-        position: markerLatLng,
-        map: map
-      });
-      // 情報ウィンドウには投稿情報モーダルへのリンクを入れる
-      infoWindow[i] = new google.maps.InfoWindow({
-        content: '<div class=show-btn>'+'<h2 class="font-bold text-lg"">'+jdata[i]["title"]+'</h2>'+'<label for="my-modal-'+jdata[i]["id"]+'" class="w-full btn btn-warning modal-button-'+jdata[i]["id"]+' mb-4">詳細をみる</label>'+'</div>'
-      });
-      // マーカー毎にクリックイベントを追加
-      markerEvent(i);
-    }
-
-    // マーカーがクリックされたら投稿情報へのリンクを表示させる
-    function markerEvent(i) {
-      marker[i].addListener('click', function() { // マーカーをクリックしたとき
-        infoWindow[i].open(map, marker[i]); // 吹き出しの表示
-      });
-    }
-  };
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap&v=weekly" defer></script>
+<section class="select-sec overflow-y-auto h-full">
+  <h1 class="text-2xl text-center">区エスト一覧</h1>
+  <div class="max-w-lg mx-auto">
+    <%= render partial: 'board', collection: @posts, as: 'post' %>
+  </div>
+  <% if current_user %>
+    <%= link_to "クエスト中画面へ", quests_path, class: "btn"%>
+  <%end%>
+</section>

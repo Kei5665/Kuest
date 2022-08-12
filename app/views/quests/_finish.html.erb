@@ -1,10 +1,8 @@
-<div class="card w-full indicator bg-base-100 shadow-xl mb-8">
-  <div class="card-body flex flex-row pb-12">
-    <div class="grow">
-      <h1 class="card-title text-white text-2xl"><%=post.title%></h1>
-    </div>
+<h1 class="text-3xl text-center text-white mb-4"><%=post.title%></h1>
+<div class="card">
+  <% if post.image.attached? %>
+    <figure><%= image_tag post.image.variant(resize: "300x300^", gravity: "center", crop: "300x300+0+0"), class: "rounded-xl shadow-lg" %></figure>
+  <% end %>
+  <div class="card-body">
   </div>
-  <span class="indicator-item indicator-bottom indicator-center badge badge-warning text-black p-4 w-4/5 mb-3">
-    獲得コイン：<%= image_tag 'coin.png', size: '25x25' %> × 5000
-  </span>
 </div>

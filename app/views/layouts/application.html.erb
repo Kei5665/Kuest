@@ -26,7 +26,7 @@
         margin: 0;
         padding: 0;
       }
-      p,h1,h2,button {
+      p,h1,h2,button,span {
         font-family: 'Reggae One', cursive;
       }
       .table td,
@@ -49,11 +49,15 @@
         border: 5px solid #73301C;
         box-shadow: 1px 1px 3px #999;
       }
-      .card {
-        background:rgba(0, 0, 0, 0.3);
-      }
       .www {
         background:rgba(0, 0, 0, 0.3);
+      }
+      .bg-quest {
+        background-image: url("<%= asset_path('paper.jpeg') %>");
+        background-size:cover;
+        background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
+        border: 5px solid #73301C;
+        box-shadow: 1px 1px 3px #999;
       }
       .select-sec {
         background-image: url("<%= asset_path('paper.jpeg') %>");
