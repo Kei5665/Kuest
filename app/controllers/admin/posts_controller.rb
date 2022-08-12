@@ -37,6 +37,12 @@ class Admin::PostsController < ApplicationController
     Scraping.new(id:params[:id])
   end
 
+  def destroy_all
+    posts = Post.all
+    posts.destroy_all
+    redirect_to admin_posts_path, success: "全データ削除に成功しました！"
+  end
+
   private
 
   def post_params

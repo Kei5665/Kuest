@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="navbar-center">
-    <a class="btn btn-ghost normal-case text-xl">kuest admin page</a>
+    <%= button_to "全削除", destroy_all_admin_posts_path, { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } } %>
   </div>
   <div class="navbar-end">
     <%= form_with url: admin_scrapes_path,local: true do |f|%>
