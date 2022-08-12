@@ -57,7 +57,12 @@ class Scraping
       if address.present? && gmap.geocode(address).present?
         comp = gmap.geocode(address)
         post.latlng = comp[0][:geometry][:location]
+
+        area = Area.where(spelling: area_name)[0]
+        post.area_id = area.id
+
         post.save
+
         sleep(1)
       else
         next
