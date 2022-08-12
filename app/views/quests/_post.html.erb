@@ -9,23 +9,24 @@
       <% end %>
       <div class="overflow-x-auto col-span-3">
         <table class="table w-full">
-          <tbody>
-            <!-- row 1 -->
-            <tr>
-              <th>場所</th>
-              <td><%=post.place%></td>
-            </tr>
-            <!-- row 2 -->
-            <tr>
-              <th>日時</th>
-              <td><%=post.date%></td>
-            </tr>
-            <!-- row 3 -->
-            <tr>
-              <th>対象</th>
-              <td><%=post.target%></td>
-            </tr>
-          </tbody>
+        <tbody>
+          <tr>
+            <th>場所</th>
+            <td><%=post.place%></td>
+          </tr>
+          <tr>
+            <th>日時</th>
+            <td><%=post.date%></td>
+          </tr>
+          <tr>
+            <th>料金</th>
+            <td><%=post.price%></td>
+          </tr>
+          <tr>
+            <th>時間</th>
+            <td><%=post.time%></td>
+          </tr>
+        </tbody>
         </table>
       </div>
     </div>
