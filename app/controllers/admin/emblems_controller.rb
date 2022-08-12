@@ -11,10 +11,11 @@ class Admin::EmblemsController < ApplicationController
       render :new
     end
   end
-end
+
 
 private
 
-def emblem_params
-  params.require(:emblem).permit(:name, :limit_num, :emblem_image)
+  def emblem_params
+    params.require(:emblem).permit(:name, :limit_num, :emblem_image)
+  end
 end

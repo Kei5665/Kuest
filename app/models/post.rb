@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
 
+  belongs_to :area
+  
   validates :title, presence: true
   validates :body, presence: true
 

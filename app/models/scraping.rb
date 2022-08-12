@@ -2,15 +2,13 @@ class Scraping
   require 'mechanize'
   require 'google_maps_service'
 
-  def scrape(page_num,erea_name)
+  def scrape(page_num,area_name)
 
 
     gmap = GoogleMapsService::Client.new(key: ENV['GOOGLE_API_KEY'])
 
     agent = Mechanize.new
-    # page = agent.get("https://tokyoeast21.net/category/taito/")
-    # elements = page.search('//*[@id="contentInner"]/main/article/div[2]/dl/dt/a')
-    page = agent.get("https://www.walkerplus.com/event_list/ar0313106/#{erea_name}/#{page_num}.html")
+    page = agent.get("https://www.walkerplus.com/event_list/ar0313106/#{area_name}/#{page_num}.html")
     elements = page.search('.m-mainlist-item__img')
     urls = []
 
@@ -19,16 +17,6 @@ class Scraping
       urls << ele.get_attribute(:href)
     end
 
-    # 東東京イベント情報
-    # urls.each do |url|
-
-    #   page = agent.get(url)
-    #   title = page.at('.entry-title')&.inner_text
-
-    #   src = page.search('.wp-block-image').at('img')['src'] # 商品画像
-    #   puts src
-    #   agent.get(src).save_as("../app/public/images/#{title}.jpg") # 保存する
-    # end
     # walker plus
     urls.each do |url|
 
@@ -69,7 +57,12 @@ class Scraping
       if address.present? && gmap.geocode(address).present?
         comp = gmap.geocode(address)
         post.latlng = comp[0][:geometry][:location]
+
+        area = Area.where(spelling: area_name)[0]
+        post.area_id = area.id
+
         post.save
+
         sleep(1)
       else
         next

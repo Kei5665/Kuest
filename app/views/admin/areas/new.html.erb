@@ -1,0 +1,9 @@
+<%= form_with model: @area, url: admin_areas_path, local: true do |f|%>
+  <div>
+    <%= f.label :area_name %>
+    <%= f.text_field :area_name,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :spelling %>
+    <%= f.text_field :spelling,class:'input input-bordered input-warning w-full' %>
+  </div>
+  <%= f.submit class:'btn btn-warning'%>
+<%end%>

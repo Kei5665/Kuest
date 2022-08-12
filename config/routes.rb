@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :scrapes, only: %i[create]
     resources :emblems, only: %i[index create new]
+    resources :areas, only: %i[index create new]
   end
   resources :posts, only: %i[index create show destroy]
   resources :quests do
