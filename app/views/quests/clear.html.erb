@@ -14,7 +14,6 @@
         <div class="stat-value text-primary"><%= @current_emblem.name %></div>
         <div class="stat-desc">次のエンブレムまであと</div>
       </div>
-      
     </div>
     <div class="grid grid-cols-5 gap-4 mb-4">
       <% if @post.image.attached? %>
@@ -23,20 +22,21 @@
       <div class="overflow-x-auto col-span-3">
         <table class="table w-full">
           <tbody>
-            <!-- row 1 -->
             <tr>
               <th>場所</th>
               <td><%=@post.place%></td>
             </tr>
-            <!-- row 2 -->
             <tr>
               <th>日時</th>
               <td><%=@post.date%></td>
             </tr>
-            <!-- row 3 -->
             <tr>
-              <th>対象</th>
-              <td><%=@post.target%></td>
+              <th>料金</th>
+              <td><%=@post.price%></td>
+            </tr>
+            <tr>
+              <th>時間</th>
+              <td><%=@post.time%></td>
             </tr>
           </tbody>
         </table>
@@ -46,5 +46,8 @@
       <p class="py-4 pl-3 text-white"><%=safe_join(@post.body.split("\n"),tag(:br))%></p>
     </div>
     <%= link_to '区エスト一覧へ', root_path, class: "btn"%>
+    <%= link_to "https://twitter.com/intent/tweet?text=#{current_user.name}さんが区エスト「#{@post.title}」をクリアしました！/&url=https://www.kuest.jp/&hashtags=区エスト", class: "btn btn-outline btn-warning" do%>
+      <%= image_tag 'twitter.png',width:'30x30' %>
+    <%end%>
   </div>
 </section>
