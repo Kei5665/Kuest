@@ -4,7 +4,7 @@
   <label class="modal-box relative" for="">
     <%= link_to "ユーザー名編集", edit_user_path(current_user), class: "btn"%>
   <p class="text-lg">現在レベル</p>
-  <p class="text-lg"><%= current_user.current_emblems.last.name %></p>
+  <p class="text-lg"><%= current_user&.current_emblems&.last&.name %></p>
     <%= render 'quests/finishes'%>
   <label for="my-modal-users" class="btn">閉じる</label>
   </label>

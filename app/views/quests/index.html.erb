@@ -32,7 +32,11 @@
         // マーカーに投稿ごとの緯度経度を代入
         marker[i] = new google.maps.Marker({
           position: markerLatLng,
-          map: map
+          map: map,
+          icon: new google.maps.MarkerImage(
+            '/assets/icon2.png',
+            new google.maps.Size(100,100),
+          ),
         });
         // 情報ウィンドウには投稿情報モーダルへのリンクを入れる
         infoWindow[i] = new google.maps.InfoWindow({
