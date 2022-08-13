@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
   get 'log_out', to: 'user_sessions#destroy', as: 'log_out'
 
+  resources :home, only: %i[index]
+
   namespace :admin do 
     resources :posts do
       collection do
@@ -13,8 +15,8 @@ Rails.application.routes.draw do
       end
     end
     resources :scrapes, only: %i[create]
-    resources :emblems, only: %i[index create new]
-    resources :areas, only: %i[index create new]
+    resources :emblems, only: %i[index create new destroy]
+    resources :areas, only: %i[index create new destroy]
   end
   resources :quests do
     member do

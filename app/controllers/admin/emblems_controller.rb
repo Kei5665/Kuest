@@ -1,4 +1,9 @@
 class Admin::EmblemsController < ApplicationController
+
+  def index
+    @emblems = Emblem&.all
+  end
+
   def new
     @emblem = Emblem.new
   end
@@ -10,6 +15,12 @@ class Admin::EmblemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @emblem = Emblem.find(params[:id])
+    @emblem.destroy!
+    redirect_to admin_posts_path, success: "削除に成功しました！"
   end
 
 

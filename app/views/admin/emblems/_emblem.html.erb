@@ -1,0 +1,9 @@
+<tr>
+  <th>
+    <%= link_to '削除', admin_emblem_path(emblem), data: { turbo_method: :delete }, class: 'btn btn-error' %>
+  </th>
+  <td>
+    <p>タイトル：<%=emblem.name %></p>
+    <p>タイトル：<%=emblem.limit_num %></p>
+  </td>
+</tr>
