@@ -17,7 +17,7 @@
       // 初期位置
       const Tokyo = { lat: 35.681427904704975, lng: 139.76717844133614 };
       map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 15,
+        zoom: 12,
         center: Tokyo,
         disableDefaultUI: true,
         gestureHandling: 'greedy',
@@ -68,14 +68,9 @@
             let currentMarker = new google.maps.Marker({
             position: currentPosition,
             map: map,
-              icon: {
-              fillColor: "yellow",
-              fillOpacity: 0.8,
-              path: google.maps.SymbolPath.CIRCLE,
-              scale: 16,
-              strokeColor: "black",
-              strokeWeight: 1.0
-            },
+              icon: new google.maps.MarkerImage(
+              '/assets/yuusya.png',
+          ),
             });
             // 現在位置はクリックすると消えるようにする
             currentMarker.addListener("click", () => {
