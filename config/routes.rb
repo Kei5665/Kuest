@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   get 'log_out', to: 'user_sessions#destroy', as: 'log_out'
 
   namespace :admin do 
-    resources :posts
+    resources :posts do
+      collection do
+        delete :destroy_all
+      end
+    end
     resources :scrapes, only: %i[create]
     resources :emblems, only: %i[index create new]
     resources :areas, only: %i[index create new]
