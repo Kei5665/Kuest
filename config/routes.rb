@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post "oauth/callback", to: "oauths#callback"
   get "oauth/callback", to: "oauths#callback"
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
+  post '/guest_login', to: 'user_sessions#guest_login'
   get 'log_out', to: 'user_sessions#destroy', as: 'log_out'
 
   resources :home, only: %i[index]
