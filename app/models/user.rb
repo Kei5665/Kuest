@@ -24,6 +24,8 @@ class User < ApplicationRecord
     elsif clear_num == 3
       new_emblem = self.user_emblems.build(emblem_id: intermediate.id)
       new_emblem.save!
+      self.assets_path = "/assets/yuusya2.png"
+      self.save!
       number_needed = advanced.limit_num  - clear_num
       "もう#{number_needed}回クリアでレベルアップ！"
     elsif clear_num < 5
@@ -32,6 +34,8 @@ class User < ApplicationRecord
     elsif clear_num == 5
       new_emblem = self.user_emblems.build(emblem_id: advanced.id)
       new_emblem.save!
+      self.assets_path = "/assets/yuusya3.png"
+      self.save!
       "レベルマックスです！"
     else
       "レベルマックスです！"
