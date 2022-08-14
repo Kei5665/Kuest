@@ -25,6 +25,6 @@ Rails.application.routes.draw do
     end
   end
   resources :posts
-  resources :users, only: %i[edit update]
+  resources :users, only: %i[edit update show]
   resources :areas
 end

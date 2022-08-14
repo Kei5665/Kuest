@@ -26,11 +26,15 @@ class QuestsController < ApplicationController
 
   def clear
     @post = current_user.ordered_quests.find(params[:id])
+
     quest = current_user.quests.find_by(post_id: params[:id])
     quest.quest_cleared = true
     quest.save!
-    clear_num = current_user.clear_num += 1
-    current_user.select_emblem(clear_num)
-    @current_emblem = current_user.current_emblems.last
+
+    clear_num = current_user.clear_num + 1
+    current_user.clear_num = clear_num
+    current_user.save
+
+    redirect_to user_path(current_user), success: "クエストをクリアしました！"  
   end
 end

@@ -13,6 +13,7 @@ class Admin::EmblemsController < ApplicationController
     if @emblem.save
       redirect_to admin_posts_path, success: "エンブレムを作成しました"
     else
+      binding.pry
       render :new
     end
   end
