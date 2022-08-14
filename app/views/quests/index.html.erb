@@ -13,7 +13,7 @@
       let marker = [];
       let jdata = JSON.parse(gon.json);
       let infoWindow = [];
-      let yuusya_img = gon.yuusya_img
+      yuusya_img = gon.yuusya_img
       
       // 初期位置
       const Tokyo = { lat: 35.681427904704975, lng: 139.76717844133614 };
@@ -70,7 +70,7 @@
             position: currentPosition,
             map: map,
               icon: new google.maps.MarkerImage(
-              '/assets/yuusya1.png',
+              yuusya_img,
               ),
             });
             // 現在位置はクリックすると消えるようにする

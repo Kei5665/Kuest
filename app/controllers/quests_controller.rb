@@ -4,6 +4,7 @@ class QuestsController < ApplicationController
   def index
     @posts = current_user.ordered_quests.joins(:quests).where(quests: {quest_cleared: false})
     gon.json = @posts.to_json
+    gon.yuusya_img = current_user.assets_path
     @finished_quests = current_user.ordered_quests.joins(:quests).where(quests: {quest_cleared: true})
   end
 
