@@ -28,6 +28,6 @@ class Admin::EmblemsController < ApplicationController
 private
 
   def emblem_params
-    params.require(:emblem).permit(:name, :limit_num, :emblem_image)
+    params.require(:emblem).permit(:name, :assets_path, :limit_num, :emblem_image)
   end
 end
