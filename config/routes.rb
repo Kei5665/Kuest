@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'areas#index'
+  root 'home#index'
 
   post "oauth/callback", to: "oauths#callback"
   get "oauth/callback", to: "oauths#callback"
