@@ -36,9 +36,13 @@
     <% if current_user %>
       <%= link_to 'クエストに出かける', quests_path(id: @post.id), data: { turbo_method: :post }, class: 'btn btn-primary' %>
     <% else %>
-      <%= link_to 'ログインしてクエストに出かける', auth_at_provider_path(provider: :google), class: "btn btn-primary"%>
+    <p class="text-bold text-lg">ログインしてクエストに出かけよう！</p>
+    <div class="btn-group">
+      <%= link_to 'グーグルログイン', auth_at_provider_path(provider: :google), class: "btn btn-primary"%>
+      <%= link_to 'ゲストログイン', guest_login_path, data: { turbo_method: :post }, class: "btn"%>
+    </div>
     <% end %>
-    <%= link_to '戻る', areas_path, class: "btn"%>
+    <%= link_to '戻る', areas_path, class: "btn mt-2"%>
   </div>
   </div>
 </section>

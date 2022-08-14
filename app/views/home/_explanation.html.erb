@@ -1,0 +1,62 @@
+<section class="bg-white border-b py-8">
+  <div class="container max-w-5xl mx-auto m-8 text-center">
+    <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+      遊び方
+    </h2>
+    <div class="w-full mb-4">
+      <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+    </div>
+    <div class="flex flex-wrap">
+      <div class="w-5/6 sm:w-1/2 p-6 self-center">
+        <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+          イベントを選ぼう！
+        </h3>
+        <p class="text-gray-600 mb-8">
+          区ごとに開催されているイベント情報がまとまっています。自分の行きたいイベントを選びましょう！
+          <br />
+          <br />
+        </p>
+      </div>
+      <div class="w-full sm:w-1/2 p-6">
+        <%= image_tag 'ex1.png',class:"rounded-lg" %>
+      </div>
+    </div>
+    
+    <div class="flex flex-wrap flex-col-reverse sm:flex-row">
+      <div class="w-full sm:w-1/2 p-6 mt-6">
+        <%= image_tag 'ex2.png',class:"rounded-lg" %>
+      </div>
+      <div class="w-full sm:w-1/2 p-6 mt-6 self-center">
+        <div class="align-middle">
+          <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+            実際にイベントの場所まで行こう！
+          </h3>
+          <p class="text-gray-600 mb-8">
+            クエストを開始するとマップにイベント場所と情報が表示されます。イベント場所の半径50メートル以内に行けばクエストがクリアできます。
+            <br />
+            <br />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap">
+      <div class="w-5/6 sm:w-1/2 p-6 self-center">
+        <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+          レベルを上げよう！
+        </h3>
+        <p class="text-gray-600 mb-8">
+          クエストをクリアするごとにマップに表示されるキャクターがパワーアップしていきます。イベントをたくさんクリアしてどんどんパワーアップさせましょう！
+          <br />
+          <br />
+        </p>
+      </div>
+      <div class="w-full sm:w-1/2 p-6">
+        <%= image_tag 'ex3.png',class:"rounded-lg" %>
+      </div>
+    </div>
+    <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+      さっそく始めましょう！
+    </h2>
+  <%= link_to "スタート", areas_path, class: "btn btn-lg btn-primary text-center w-96"%>
+  </div>
+</section>

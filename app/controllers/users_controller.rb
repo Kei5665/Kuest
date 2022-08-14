@@ -12,6 +12,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @post = current_user.ordered_quests.last
+
+    clear_num = current_user.clear_num
+    @level_statement = current_user.select_emblem(clear_num)
+
+    @emblem = current_user.current_emblems.last
+  end
+
   private
 
   def update_params

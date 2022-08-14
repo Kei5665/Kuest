@@ -1,4 +1,9 @@
 class Admin::AreasController < ApplicationController
+
+  def index
+    @areas = Area&.all
+  end
+
   def new
     @area = Area.new
   end
@@ -10,6 +15,12 @@ class Admin::AreasController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @area = Area.find(params[:id])
+    @area.destroy!
+    redirect_to admin_posts_path, success: "削除に成功しました！"
   end
 
 private

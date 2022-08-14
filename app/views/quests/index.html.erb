@@ -13,11 +13,12 @@
       let marker = [];
       let jdata = JSON.parse(gon.json);
       let infoWindow = [];
+      yuusya_img = gon.yuusya_img
       
       // 初期位置
       const Tokyo = { lat: 35.681427904704975, lng: 139.76717844133614 };
       map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 15,
+        zoom: 12,
         center: Tokyo,
         disableDefaultUI: true,
         gestureHandling: 'greedy',
@@ -32,7 +33,11 @@
         // マーカーに投稿ごとの緯度経度を代入
         marker[i] = new google.maps.Marker({
           position: markerLatLng,
-          map: map
+          map: map,
+          icon: new google.maps.MarkerImage(
+            '/assets/icon2.png',
+            new google.maps.Size(100,100),
+          ),
         });
         // 情報ウィンドウには投稿情報モーダルへのリンクを入れる
         infoWindow[i] = new google.maps.InfoWindow({
@@ -64,14 +69,9 @@
             let currentMarker = new google.maps.Marker({
             position: currentPosition,
             map: map,
-              icon: {
-              fillColor: "yellow",
-              fillOpacity: 0.8,
-              path: google.maps.SymbolPath.CIRCLE,
-              scale: 16,
-              strokeColor: "black",
-              strokeWeight: 1.0
-            },
+              icon: new google.maps.MarkerImage(
+              yuusya_img,
+              ),
             });
             // 現在位置はクリックすると消えるようにする
             currentMarker.addListener("click", () => {

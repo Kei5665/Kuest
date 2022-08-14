@@ -3,7 +3,8 @@
   <% if post.image.attached? %>
     <figure><%= image_tag post.image.variant(resize: "300x300^", gravity: "center", crop: "300x300+0+0"), class: "rounded-xl shadow-lg" %></figure>
   <% end %>
-  <div class="card-body">
+  <div class="card-body hidden lg:block">
+    <p><%= post.title%></p>
   </div>
 </div>
 <%end%>

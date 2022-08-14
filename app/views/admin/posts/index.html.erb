@@ -28,6 +28,8 @@
 
 <div class="overflow-x-auto w-full">
   <table class="table w-full">
-    <%= render partial: 'post', collection: @posts, as: 'post' %>
+    <tbody class="bg-quest">
+      <%= render partial: 'post', collection: @posts, as: 'post' %>
+    </tbody>
   </table>
 </div>
