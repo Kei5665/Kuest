@@ -1,6 +1,6 @@
 class Admin::PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.all.order(area_id: :desc)
   end
   
   def create
