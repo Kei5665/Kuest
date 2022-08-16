@@ -46,6 +46,6 @@ class Admin::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :latlng, :image, :place, :date, :target, :url, :time, :price, :address)
+    params.require(:post).permit(:title, :body, :latlng, :image, :place, :date, :time, :price, :address)
   end
 end
