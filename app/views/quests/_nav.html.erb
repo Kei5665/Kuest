@@ -4,6 +4,6 @@
   <%else%>
     <%= link_to 'ログイン', auth_at_provider_path(provider: :google), class: "btn"%>
   <%end%>
-  <button class="btn">使い方</button>
+  <%= link_to '使い方', home_index_path, class: "btn"%>
   <button class="btn" onclick="getCurrent()">現在地</button>
 </div>
