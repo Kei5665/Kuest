@@ -1,10 +1,12 @@
-<section class="select-sec overflow-y-auto h-full">
-  <h1 class="text-4xl text-center mb-4">区エスト一覧</h1>
+<section class="select-sec overflow-y-auto h-full p-6">
+  <h1 class="text-center my-6 text-5xl">区エスト一覧</h1>
   <div class="grid grid-cols-3 md:grid-cols-5 gap-4 container mx-auto">
     <%= render partial: 'post', collection: @posts, as: 'post' %>
   </div>
-  <% if current_user %>
-    <%= link_to "クエスト中画面へ", quests_path, class: "btn"%>
-  <%end%>
-  <%= link_to "区一覧へ", areas_path, class: "btn"%>
+  <div class="text-center my-6">
+    <% if current_user %>
+      <%= link_to "クエスト中画面へ", quests_path, class: "btn"%>
+    <%end%>
+    <%= link_to "区一覧へ", areas_path, class: "btn"%>
+  </div>
 </section>
