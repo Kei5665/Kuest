@@ -1,7 +1,7 @@
 <section class="select-sec p-6">
 <div class="max-w-lg mx-auto">
   <h1 class="text-5xl text-center my-4">区エスト詳細</h1>
-  <h1 class="text-3xl text-center text-white mb-4"><%=@post.title%></h1>
+  <h1 class="text-3xl text-center text-white my-8"><%=@post.title%></h1>
   <div class="grid grid-cols-5 gap-4 my-4">
     <% if @post.image.attached? %>
       <%= image_tag @post.image.variant(resize: "200x200>"),class: "col-span-2 rounded-xl self-center" %>
@@ -30,7 +30,7 @@
     </div>
   </div>
   <div class="www rounded-lg mb-4">
-    <p class="p-4 text-white text-lg leading-relaxed"><%=safe_join(@post.body.split("\n"),tag(:br))%></p>
+    <p class="p-4 text-white text-lg leading-loose"><%=safe_join(@post.body.split("\n"),tag(:br))%></p>
   </div>
   <div class="text-center">
     <% if current_user %>
