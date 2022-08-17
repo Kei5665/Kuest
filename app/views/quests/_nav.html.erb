@@ -1,9 +1,15 @@
 <div id="bar3">
-  <% if current_user %>
-    <%= link_to "ログアウト", log_out_path, class: "btn"%>
-  <%else%>
-    <%= link_to 'ログイン', auth_at_provider_path(provider: :google), class: "btn"%>
-  <%end%>
-  <%= link_to '使い方', home_index_path, class: "btn"%>
-  <button class="btn" onclick="getCurrent()">現在地</button>
+  <button class="btn btn-primary" onclick="getCurrent()">現在地</button>
+  <div class="dropdown dropdown-end">
+    <label tabindex="0" class="btn m-1">メニュー</label>
+    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+      <% if current_user %>
+        <%= link_to "ログアウト", log_out_path, class: "btn my-2"%>
+      <%else%>
+        <%= link_to 'ログイン', auth_at_provider_path(provider: :google), class: "btn my-2"%>
+      <%end%>
+      <%= link_to '使い方', home_index_path, class: "btn my-2"%>
+      <%= link_to "ユーザー名編集", edit_user_path(current_user), class: "btn my-2"%>
+    </ul>
+  </div>
 </div>
