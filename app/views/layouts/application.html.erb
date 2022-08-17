@@ -76,5 +76,7 @@
     <%= render 'shared/validate_stamp'%>
     <%= render 'shared/flash_message'%>
     <%= yield %>
+
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap&v=weekly" defer></script>
   </body>
 </html>
