@@ -104,3 +104,8 @@ function calculateDistance(latlng,id){
     stampValidate.classList.remove("disable");
   };
 };
+
+function closeValidate(){
+  let stampValidate = document.getElementById('stamp_validate');
+  stampValidate.classList.add("disable");
+}
