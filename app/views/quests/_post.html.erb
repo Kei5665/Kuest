@@ -1,8 +1,8 @@
 <input type="checkbox" id="my-modal-<%=post.id%>" class="modal-toggle" />
 <div class="modal" id="my-modal-<%=post.id%>">
-  <div class="modal-box">
-    <h1 class="text-2xl text-center mb-4">区エスト詳細</h1>
-    <h1 class="text-3xl text-center text-white mb-4"><%=post.title%></h1>
+  <div class="modal-box p-6">
+    <h1 class="text-5xl text-center my-4">区エスト詳細</h1>
+    <h1 class="text-3xl text-center text-white my-8"><%=post.title%></h1>
     <div class="grid grid-cols-5 gap-4 mb-4">
       <% if post.image.attached? %>
         <%= image_tag post.image.variant(resize: "200x200>"),class: "col-span-2 rounded-xl self-center" %>
@@ -11,19 +11,19 @@
         <table class="table w-full">
         <tbody>
           <tr>
-            <th>場所</th>
+            <td class="font-bold">場所</td>
             <td><%=post.place%></td>
           </tr>
           <tr>
-            <th>日時</th>
+            <td class="font-bold">日時</td>
             <td><%=post.date%></td>
           </tr>
           <tr>
-            <th>料金</th>
+            <td class="font-bold">料金</td>
             <td><%=post.price%></td>
           </tr>
           <tr>
-            <th>時間</th>
+            <td class="font-bold">時間</td>
             <td><%=post.time%></td>
           </tr>
         </tbody>
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="www rounded mb-4">
-      <p class="py-4 pl-3 text-white"><%=safe_join(post.body.split("\n"),tag(:br))%></p>
+      <p class="p-4 text-white text-lg leading-loose"><%=safe_join(post.body.split("\n"),tag(:br))%></p>
     </div>
     <div class="card-actions justify-start">
       <%= link_to 'クエストをキャンセルする', quest_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>

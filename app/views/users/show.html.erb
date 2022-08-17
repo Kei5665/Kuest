@@ -1,7 +1,7 @@
-<section class="select-sec">
-  <h1 class="text-3xl text-center mb-4 text-white text-bold">区エストクリア!!</h1>
+<section class="select-sec p-6">
+  <h1 class="text-5xl text-center my-4 text-white text-bold">区エストクリア!!</h1>
   <div class="max-w-lg mx-auto">
-    <h1 class="text-3xl text-center text-white mb-4"><%=@post.title%></h1>
+    <h1 class="text-3xl text-center text-white my-8"><%=@post.title%></h1>
     <div class="flex justify-center">
       <div class="stats shadow mx-auto text-center">
         
@@ -25,29 +25,31 @@
         <table class="table w-full">
           <tbody>
             <tr>
-              <th>場所</th>
+              <td class="font-bold">場所</td>
               <td><%=@post.place%></td>
             </tr>
             <tr>
-              <th>日時</th>
+              <td class="font-bold">日時</td>
               <td><%=@post.date%></td>
             </tr>
             <tr>
-              <th>料金</th>
+              <td class="font-bold">料金</td>
               <td><%=@post.price%></td>
             </tr>
             <tr>
-              <th>時間</th>
+              <td class="font-bold">時間</td>
               <td><%=@post.time%></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-    <div class="www rounded mb-4">
-      <p class="py-4 pl-3 text-white"><%=safe_join(@post.body.split("\n"),tag(:br))%></p>
+    <div class="www www rounded-lg mb-4">
+      <p class="p-4 text-white text-lg leading-loose"><%=safe_join(@post.body.split("\n"),tag(:br))%></p>
     </div>
-    <%= link_to '区エスト一覧へ', root_path, class: "btn"%>
+    <div class="text-center">
+      <%= link_to '区エスト一覧へ', root_path, class: "btn"%>
+    </div>
     <%
 =begin%>
  <%= link_to "https://twitter.com/intent/tweet?text=#{current_user.name}さんが区エスト「#{@post.title}」をクリアしました！/&url=https://www.kuest.jp/&hashtags=区エスト", class: "btn btn-outline btn-warning" do%>
