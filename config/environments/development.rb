@@ -59,6 +59,10 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.assets.precompile += ['quest.js']
+  config.assets.precompile += ['flash.js']
+  config.assets.precompile += ['style.css']
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 

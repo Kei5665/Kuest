@@ -15,66 +15,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">
     <%= javascript_importmap_tags %>
-
-    <style>
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      p,h1,h2,button,span {
-        font-family: 'Reggae One', cursive;
-      }
-      .table td,
-      .table th {
-        background:none;
-      }
-      .gm-style .gm-style-iw-c {
-        padding:0;
-      }
-      .show-btn {
-        padding:12px;
-      }
-      .disable {
-        display:none;
-      }
-      .modal-box {
-        background-image: url("<%= asset_path('paper.jpeg') %>");
-        background-size:cover;
-        background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
-        border: 5px solid #73301C;
-        box-shadow: 1px 1px 3px #999;
-      }
-      .www {
-        background:rgba(0, 0, 0, 0.3);
-      }
-      .bg-quest {
-        background-image: url("<%= asset_path('paper.jpeg') %>");
-        background-size:cover;
-        background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
-        border: 5px solid #73301C;
-        box-shadow: 1px 1px 3px #999;
-      }
-      .select-sec {
-        background-image: url("<%= asset_path('paper.jpeg') %>");
-        background-size:cover;
-        background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
-        border: 5px solid #73301C;
-        box-shadow: 1px 1px 3px #999;
-        width:100%;
-        min-height:100vh;
-      }
-    </style>
+    <%= stylesheet_link_tag "style"%>
     </head>
 
   <body>
     <%= render 'shared/validate_stamp'%>
     <%= render 'shared/flash_message'%>
     <%= yield %>
+
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap&v=weekly" defer></script>
   </body>
 </html>
