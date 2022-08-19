@@ -38,8 +38,8 @@
     <% else %>
       <p class="text-bold text-lg">ログインしてクエストに出かけよう！</p>
       <div class="text-center">
+        <%= link_to 'ゲストログイン', guest_login_path(post_id: @post.id), data: { turbo_method: :post }, class: "btn"%>
         <%= link_to 'googleログイン', auth_at_provider_path(provider: :google), class: "btn btn-primary"%>
-        <%= link_to 'ゲストログイン', guest_login_path, data: { turbo_method: :post }, class: "btn"%>
       </div>
     <% end %>
     <%= link_to '戻る', area_path(@post.area), class: "btn mt-2"%>
