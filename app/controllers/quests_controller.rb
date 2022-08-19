@@ -11,7 +11,7 @@ class QuestsController < ApplicationController
   def create
     post = Post.find(params[:id])
     if current_user.ordered_quests.include?(post)
-      redirect_to root_path, warning: "このクエストは受注済みです"  
+      redirect_to post_path(post), warning: "このクエストは受注済みです"  
     else
       current_user.ordered_quests << post
       redirect_to quests_path, success: "クエストを開始します！"  
