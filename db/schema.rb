@@ -77,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_22_132747) do
     t.string "address"
     t.string "price"
     t.bigint "area_id"
+    t.string "url"
     t.index ["area_id"], name: "index_posts_on_area_id"
   end
 
