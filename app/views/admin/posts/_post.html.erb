@@ -1,24 +1,23 @@
-<tr>
-  <th>
-    <%= link_to "編集", edit_admin_post_path(post), class: "btn btn-primary"%>
-    <%= link_to '削除', admin_post_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
-  </th>
-  <td>
-    <div class="mask mask-squircle w-12 h-12">
-      <% if post.image.attached? %>
-        <%= image_tag post.image,class: "col-span-2 rounded-xl self-center" %>
-      <% end %>
-    </div>
-  </td>
-  <td>
-  <p>タイトル：<%= post.title %></p>
-  <p>本文：<%= post.body.truncate(30)  %></p>
-  <p>日にち：<%= post.date %></p>
-  <p>時間：<%= post.time %></p>
-  <p>金額：<%= post.price %></p>
-  <p>場所：<%= post.place %></p>
-  <p>座標：<%= post.latlng %></p>
-  <p>住所：<%= post.address %></p>
-  <p>エリア：<%= post.area_id %></p>
-  </td>
-</tr>
+<%= form_with model: post,local: false do |f|%>
+<turbo-frame id="post_error"></turbo-frame>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :place %>
+    <%= f.text_field :place,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :date %>
+    <%= f.text_field :date,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :time %>
+    <%= f.text_field :time,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :price %>
+    <%= f.text_field :price,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :address %>
+    <%= f.text_field :address,class:'input input-bordered input-warning w-full' %>
+    <%= f.label :latlng %>
+    <%= f.text_field :latlng,class:'input input-bordered input-warning w-full', id: 'latlng' %>
+    <%= f.label :url %>
+    <%= f.text_field :url,class:'input input-bordered input-warning w-full', id: 'latlng' %>
+
+  </div>
+  <%= f.submit class:'btn btn-warning'%>
+<%end%>
