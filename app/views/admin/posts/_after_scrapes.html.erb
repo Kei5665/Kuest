@@ -9,6 +9,11 @@
         <th>金額</th>
         <th>場所</th>
         <th>エリアID</th>
+        <th>日にち</th>
+        <th>時間</th>
+        <th>住所</th>
+        <th>URL</th>
+        <th>座標</th>
       </tr>
     </thead>
     <tbody>
@@ -30,6 +35,21 @@
           </td>
           <td>
             <%= f.number_field :area_id, class: 'input input-bordered input-primary' %>
+          </td>
+          <td>
+            <%= f.text_field :date, class: 'textarea textarea-primary' %>
+          </td>
+          <td>
+            <%= f.text_field :time, class: 'textarea textarea-primary' %>
+          </td>
+          <td>
+            <%= f.text_field :address, class: 'textarea textarea-primary' %>
+          </td>
+          <td>
+            <%= f.text_field :url, class: 'textarea textarea-primary' %>
+          </td>
+          <td>
+            <%= f.text_field :latlng, class: 'textarea textarea-primary' %>
           </td>
         </tr>
       <%end%>
