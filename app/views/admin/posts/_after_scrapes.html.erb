@@ -1,5 +1,39 @@
-  <table class="table w-full">
-    <tbody class="bg-quest">
-      <%= render partial: 'admin/posts/post', collection: posts, as: 'post' %>
+<%= form_with model: form, url: admin_posts_path, method: :post, local: true do |form| %>
+  <table class="table mx-auto">
+    <thread>
+      <tr>
+        <th>
+          <input type="checkbox" class="checkbox" />
+        </th>
+        <th>タイトル</th>
+        <th>金額</th>
+        <th>場所</th>
+        <th>エリアID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= form.fields_for :posts do |f| %>
+        <tr>
+          <th>
+            <label>
+              <%= f.check_box :availability, class: 'checkbox' %>
+            </label>
+          </th>
+          <td>
+            <%= f.text_field :title, class: 'textarea textarea-primary' %>
+          </td>
+          <td>
+            <%= f.text_field :price, class: 'textarea textarea-primary' %>
+          </td%>
+          <td>
+            <%= f.text_field :place, class: 'textarea textarea-primary' %>
+          </td>
+          <td>
+            <%= f.number_field :area_id, class: 'input input-bordered input-primary' %>
+          </td>
+        </tr>
+      <%end%>
     </tbody>
   </table>
+  <%= form.submit "一括登録", class: 'btn'%>
+<%end%>

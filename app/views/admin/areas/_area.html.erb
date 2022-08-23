@@ -3,6 +3,7 @@
     <%= link_to '削除', admin_area_path(area), data: { turbo_method: :delete }, class: 'btn btn-error' %>
   </th>
   <td>
+    <p>タイトル：<%=area.id %></p>
     <p>タイトル：<%=area.area_name %></p>
     <p>タイトル：<%=area.spelling %></p>
   </td>
