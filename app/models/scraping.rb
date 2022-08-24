@@ -41,15 +41,13 @@ class Scraping
       p "#{detail_page.at('.is-more')&.get_attribute(:href)}"
 
       post = Post.new
+      post.url = formal_url
       post.title = title
       post.place = place
       post.date = date
       post.address = address
       post.time = time
       post.price = price
-      post.url = formal_url
-      # downloaded_image = URI.parse(image).open
-      # post.image.attach(io: downloaded_image, filename: "#{title}.jpg")
 
       if address.present? && gmap.geocode(address).present?
         comp = gmap.geocode(address)

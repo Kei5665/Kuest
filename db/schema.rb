@@ -72,11 +72,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_115148) do
     t.datetime "updated_at", null: false
     t.string "date"
     t.string "place"
+    t.string "url"
     t.string "time"
     t.string "address"
     t.string "price"
     t.bigint "area_id"
-    t.string "url"
     t.boolean "availability", default: false
     t.decimal "latitude"
     t.decimal "longitude"
