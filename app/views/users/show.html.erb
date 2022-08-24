@@ -17,35 +17,32 @@
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-5 gap-4 mb-4">
-      <% if @post.image.attached? %>
-        <%= image_tag @post.image.variant(resize: "200x200>"),class: "col-span-2 rounded-xl self-center" %>
-      <% end %>
-      <div class="overflow-x-auto col-span-3">
-        <table class="table w-full">
-          <tbody>
-            <tr>
-              <td class="font-bold">場所</td>
-              <td><%=@post.place%></td>
-            </tr>
-            <tr>
-              <td class="font-bold">日時</td>
-              <td><%=@post.date%></td>
-            </tr>
-            <tr>
-              <td class="font-bold">料金</td>
-              <td><%=@post.price%></td>
-            </tr>
-            <tr>
-              <td class="font-bold">時間</td>
-              <td><%=@post.time%></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="www www rounded-lg mb-4">
-      <p class="p-4 text-white text-lg leading-loose"><%=safe_join(@post.body.split("\n"),tag(:br))%></p>
+    <div class="my-8">
+      <%= image_tag 'kuest', class: 'rounded-lg'%>
+      <table class="table-auto">
+        <tbody>
+          <tr>
+            <th class="font-bold w-20 text-lg">場所</th>
+            <td class="font-bold text-lg"><%=@post.place%></td>
+          </tr>
+          <tr>
+            <th class="font-bold">日時</th>
+            <td><%=@post.date%></td>
+          </tr>
+          <tr>
+            <th class="font-bold">料金</th>
+            <td><%=@post.price%></td>
+          </tr>
+          <tr>
+            <th class="font-bold">時間</th>
+            <td><%=@post.time%></td>
+          </tr>
+          <tr>
+            <th class="font-bold">公式URL</th>
+            <td class="link link-primary"><%= raw Rinku.auto_link(h("#{@post.url}")) %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="text-center">
       <%= link_to '区エスト一覧へ', root_path, class: "btn"%>
