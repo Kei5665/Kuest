@@ -1,0 +1,10 @@
+<div id="item<%=post.id%>" class="carousel-item w-full grid grid-cols-1">
+<%= link_to post_path(post),class:'w-full' do%>
+<div class="card w-full">
+  <figure><%= image_tag 'kuest', class: 'rounded-lg'%></figure>
+  <div class="card-body">
+    <p class="text-2xl"><%= post.title%></p>
+  </div>
+</div>
+<%end%>
+</div>
