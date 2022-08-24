@@ -3,7 +3,7 @@ class Scraping
   require 'google_maps_service'
 
   def scrape(page_num,area_name,area_num)
-
+    posts = []
 
     gmap = GoogleMapsService::Client.new(key: ENV['GOOGLE_API_KEY'])
 
@@ -30,9 +30,7 @@ class Scraping
       time = detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[4]/td')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")
       address = detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[7]/td')&.inner_text
       price = price_page.at('.m-infotable__td')&.inner_text
-      body = page.search('/html/body/div[1]/div[1]/main/section[1]/div[3]/div[2]/div[2]/p')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")
-      src = page.at('.m-detailmain__slide_item img[1]').get_attribute(:src)
-      image = "https:" + src
+      url = detail_page.at('.is-more')&.get_attribute(:href)
 
       p "#{detail_page.at('.m-detailheader-heading__ttl')&.inner_text}"
       p "#{detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[1]/td')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")&.delete("[地図]")}"
@@ -40,8 +38,7 @@ class Scraping
       p "#{detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[4]/td')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")}"
       p "#{detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[7]/td')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")}"
       p "#{price_page.at('.m-infotable__td')&.inner_text}"
-      p "#{page.search('/html/body/div[1]/div[1]/main/section[1]/div[3]/div[2]/div[2]/p')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")}"
-      p "#{page.at('.m-detailmain__slide_item img[1]')}"
+      p "#{detail_page.at('.is-more')&.get_attribute(:href)}"
 
       post = Post.new
       post.title = title
@@ -50,24 +47,28 @@ class Scraping
       post.address = address
       post.time = time
       post.price = price
-      post.body = body
-      downloaded_image = URI.parse(image).open
-      post.image.attach(io: downloaded_image, filename: "#{title}.jpg")
+      post.url = url
+      # downloaded_image = URI.parse(image).open
+      # post.image.attach(io: downloaded_image, filename: "#{title}.jpg")
 
       if address.present? && gmap.geocode(address).present?
         comp = gmap.geocode(address)
-        post.latlng = comp[0][:geometry][:location]
+        post.latitude = comp[0][:geometry][:location][:lat]
+        post.longitude = comp[0][:geometry][:location][:lng]
 
         area = Area.where(spelling: area_name)[0]
         post.area_id = area.id
 
-        post.save
-
+        posts.push(post)
+        
         sleep(1)
       else
         next
       end
 
     end
+
+    posts
+
   end
 end

@@ -7,11 +7,9 @@
       <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li><%= link_to "エンブレム作成", new_admin_emblem_path %></li>
         <li><%= link_to "エリア作成", new_admin_area_path %></li>
+        <li><%= button_to "全削除", destroy_all_admin_posts_path, { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } } %></li>
       </ul>
     </div>
-  </div>
-  <div class="navbar-center">
-    <%= button_to "全削除", destroy_all_admin_posts_path, { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } } %>
   </div>
   <div class="navbar-end">
     <%= form_with url: admin_scrapes_path,local: true do |f|%>
@@ -28,10 +26,6 @@
   </div>
 </div>
 
-<div class="overflow-x-auto w-full">
-  <table class="table w-full">
-    <tbody class="bg-quest">
-      <%= render partial: 'post', collection: @posts, as: 'post' %>
-    </tbody>
-  </table>
+<div class="w-full">
+<turbo-frame id="scrapes"></turbo-frame>
 </div>

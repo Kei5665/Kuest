@@ -1,8 +1,1 @@
 <h1 class="text-3xl text-center text-white my-4"><%=post.title%></h1>
-<div class="card">
-  <% if post.image.attached? %>
-    <figure><%= image_tag post.image.variant(resize: "300x300^", gravity: "center", crop: "300x300+0+0"), class: "rounded-xl shadow-lg" %></figure>
-  <% end %>
-  <div class="card-body">
-  </div>
-</div>

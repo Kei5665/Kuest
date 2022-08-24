@@ -3,40 +3,37 @@
   <div class="modal-box p-6">
     <h1 class="text-3xl text-center my-4">区エスト詳細</h1>
     <h1 class="text-3xl text-center text-white my-8"><%=post.title%></h1>
-    <div class="grid grid-cols-5 gap-4 mb-4">
-      <% if post.image.attached? %>
-        <%= image_tag post.image.variant(resize: "200x200>"),class: "col-span-2 rounded-xl self-center" %>
-      <% end %>
-      <div class="overflow-x-auto col-span-3">
-        <table class="table w-full">
+    <div>
+      <%= image_tag 'kuest', class: 'rounded-lg'%>
+      <table class="table-auto my-8">
         <tbody>
           <tr>
-            <td class="font-bold">場所</td>
-            <td><%=post.place%></td>
+            <th class="font-bold w-20 text-lg">場所</th>
+            <td class="font-bold text-lg"><%=post.place%></td>
           </tr>
           <tr>
-            <td class="font-bold">日時</td>
+            <th class="font-bold">日時</th>
             <td><%=post.date%></td>
           </tr>
           <tr>
-            <td class="font-bold">料金</td>
+            <th class="font-bold">料金</th>
             <td><%=post.price%></td>
           </tr>
           <tr>
-            <td class="font-bold">時間</td>
+            <th class="font-bold">時間</th>
             <td><%=post.time%></td>
           </tr>
+          <tr>
+            <th class="font-bold">公式URL</th>
+            <td class="link link-primary"><%= raw Rinku.auto_link(h("#{post.url}")) %></td>
+          </tr>
         </tbody>
-        </table>
-      </div>
+      </table>
     </div>
-    <div class="www rounded mb-4">
-      <p class="p-4 text-white text-lg leading-loose"><%=safe_join(post.body.split("\n"),tag(:br))%></p>
-    </div>
-    <div class="card-actions justify-start">
+  <div class="card-actions justify-start">
       <%= link_to 'クエストをキャンセルする', quest_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
-      <button class="btn btn-warning" id="<%=post.id%>" value="<%=post.latlng.to_json%>" onclick="calculateDistance(this.value,this.id)">距離を測る</button>
-      <%= link_to 'クエストクリア！', clear_quest_path(id: post.id),id: "#{post.id}-stamp", class: 'btn btn-success' %>
+      <button class="btn btn-warning" id="<%=post.id%>" value="<%=post.latitude%>,<%=post.longitude%>" onclick="calculateDistance(this.value,this.id)">距離を測る</button>
+      <%= link_to 'クエストクリア！', clear_quest_path(id: post.id),id: "#{post.id}-stamp", class: 'btn btn-success',disabled: true %>
       <label for="my-modal-<%=post.id%>" class="btn">閉じる</label>
     </div>
   </div>

@@ -19,7 +19,7 @@ map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById
   // 投稿データをマーカーに代入する
   for (var i = 0; i < jdata.length; i++) {
     // 投稿ごとの緯度経度
-    markerLatLng = {lat: jdata[i]['latlng']['lat'], lng: jdata[i]['latlng']['lng']};
+    markerLatLng = {lat: parseFloat(jdata[i]['latitude']), lng: parseFloat(jdata[i]['longitude'])};
     // マーカーに投稿ごとの緯度経度を代入
     marker[i] = new google.maps.Marker({
       position: markerLatLng,
@@ -81,14 +81,14 @@ map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById
 };
 // 現在位置とスタンプの距離をはかる
 function calculateDistance(latlng,id){
-  json_latlng = JSON.parse(latlng)
+
+  latlng_arr = latlng.split(',');
 
   let stampPosition = {
-        lat: json_latlng["lat"],
-        lng: json_latlng["lng"],
+        lat: parseFloat(latlng_arr[0]),
+        lng: parseFloat(latlng_arr[1]),
       };
 
-  console.log(stampPosition);
   let calculateBtnId = id
   let stampBtnId = id + "-stamp";
   let stampValidate = document.getElementById('stamp_validate');
@@ -97,8 +97,8 @@ function calculateDistance(latlng,id){
 
   let distance = google.maps.geometry.spherical.computeDistanceBetween(currentPosition, stampPosition);
   if (distance <= 50.0) {
-    calculateBtn.classList.add("disable");
-    stampBtn.classList.remove("disable");
+    calculateBtn.setAttribute("disabled", true);
+    stampBtn.removeAttribute("disabled");
     console.log(stampBtn)
   } else {
     stampValidate.classList.remove("disable");
