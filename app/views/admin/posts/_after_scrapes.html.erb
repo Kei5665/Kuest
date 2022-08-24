@@ -13,7 +13,8 @@
         <th>時間</th>
         <th>住所</th>
         <th>URL</th>
-        <th>座標</th>
+        <th>緯度</th>
+        <th>経度</th>
       </tr>
     </thead>
     <tbody>
@@ -49,7 +50,10 @@
             <%= f.text_field :url, class: 'textarea textarea-primary' %>
           </td>
           <td>
-            <%= f.text_field :latlng, class: 'textarea textarea-primary' %>
+            <%= f.number_field :latitude, class: 'input input-bordered input-primary' %>
+          </td>
+          <td>
+            <%= f.number_field :longitude, class: 'input input-bordered input-primary' %>
           </td>
         </tr>
       <%end%>

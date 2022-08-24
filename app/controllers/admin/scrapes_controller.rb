@@ -12,21 +12,4 @@ class Admin::ScrapesController < ApplicationController
       locals: { form: product_collection },
     )
   end
-
-  def new
-    @form = Form::ProductCollection.new
-  end
-
-  # def create
-  #   @form = Form::ProductCollection.new(product_collection_params)
-
-  #   if @form.save
-  #     redirect_to root_path, notice: "投稿を登録しました"
-  #   else
-  #     flash.now[:alert] = "商品登録に失敗しました"
-  #     render :new
-  #   end
-
-  # end
-
 end
