@@ -46,6 +46,6 @@ class Admin::PostsController < ApplicationController
 
   def product_collection_params
     params.require(:form_product_collection)
-    .permit(posts_attributes: [:title, :latitude, :longitude, :place, :date, :time, :price, :address, :area_id, :availability, :url])
+    .permit(posts_attributes: [:title, :latitude, :longitude, :place, :date, :time, :price, :address, :area_id, :availability, :url, :start_date, :finish_date])
   end
 end
