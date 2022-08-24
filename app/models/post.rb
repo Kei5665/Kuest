@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   has_one_attached :image
   has_many :quests, dependent: :destroy
 
-  def started?
+  def opened?
     Time.current >= start_date
   end
 

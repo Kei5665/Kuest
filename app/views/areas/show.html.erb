@@ -1,10 +1,10 @@
 <section class="select-sec overflow-y-auto h-full p-6">
   <h1 class="text-center my-8 text-5xl">開催中の区エスト</h1>
   <div class="carousel max-w-lg mx-auto">
-    <%= render partial: 'carousel_post', collection: @posts, as: 'post' %>
+    <%= render partial: 'carousel_post', collection: @open_posts, as: 'post' %>
   </div> 
   <div class="flex justify-center w-full py-2 gap-2">
-    <%= render partial: 'carousel_button', collection: @posts, as: 'post' %>
+    <%= render partial: 'carousel_button', collection: @open_posts, as: 'post' %>
   </div>
 
   <h1 class="text-center my-8 text-5xl">区エスト一覧</h1>
