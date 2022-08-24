@@ -30,7 +30,7 @@ class Scraping
       time = detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[4]/td')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")
       address = detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[7]/td')&.inner_text
       price = price_page.at('.m-infotable__td')&.inner_text
-      url = detail_page.at('.is-more')&.get_attribute(:href)
+      formal_url = detail_page.at('.is-more')&.get_attribute(:href)
 
       p "#{detail_page.at('.m-detailheader-heading__ttl')&.inner_text}"
       p "#{detail_page.at('/html/body/div/div[1]/main/section[1]/div[4]/table/tr[1]/td')&.inner_text&.gsub(/[\r\n]/,"")&.gsub(" ", "")&.delete("[地図]")}"
@@ -47,7 +47,7 @@ class Scraping
       post.address = address
       post.time = time
       post.price = price
-      post.url = url
+      post.url = formal_url
       # downloaded_image = URI.parse(image).open
       # post.image.attach(io: downloaded_image, filename: "#{title}.jpg")
 
