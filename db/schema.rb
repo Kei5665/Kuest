@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_23_141317) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_24_005337) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,13 +72,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_23_141317) do
     t.datetime "updated_at", null: false
     t.string "date"
     t.string "place"
-    t.jsonb "latlng"
     t.string "time"
     t.string "address"
     t.string "price"
     t.bigint "area_id"
     t.string "url"
     t.boolean "availability", default: false
+    t.decimal "latitude"
+    t.decimal "longitude"
     t.index ["area_id"], name: "index_posts_on_area_id"
   end
 
