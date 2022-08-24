@@ -10,6 +10,8 @@
         <th>場所</th>
         <th>エリアID</th>
         <th>日にち</th>
+        <th>開始日</th>
+        <th>終了日</th>
         <th>時間</th>
         <th>住所</th>
         <th>URL</th>
@@ -39,6 +41,12 @@
           </td>
           <td>
             <%= f.text_field :date, class: 'textarea textarea-primary' %>
+          </td>
+          <td>
+            <%= f.date_field :start_date, class: 'textarea textarea-primary' %>
+          </td>
+          <td>
+            <%= f.date_field :finish_date, class: 'textarea textarea-primary' %>
           </td>
           <td>
             <%= f.text_field :time, class: 'textarea textarea-primary' %>

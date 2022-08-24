@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_24_005337) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_24_115148) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_005337) do
     t.boolean "availability", default: false
     t.decimal "latitude"
     t.decimal "longitude"
+    t.date "start_date"
+    t.date "finish_date"
     t.index ["area_id"], name: "index_posts_on_area_id"
   end
 
