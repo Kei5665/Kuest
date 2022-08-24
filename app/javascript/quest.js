@@ -97,8 +97,8 @@ function calculateDistance(latlng,id){
 
   let distance = google.maps.geometry.spherical.computeDistanceBetween(currentPosition, stampPosition);
   if (distance <= 50.0) {
-    calculateBtn.classList.add("disable");
-    stampBtn.classList.remove("disable");
+    calculateBtn.setAttribute("disabled", true);
+    stampBtn.removeAttribute("disabled");
     console.log(stampBtn)
   } else {
     stampValidate.classList.remove("disable");
