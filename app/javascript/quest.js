@@ -81,14 +81,14 @@ map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById
 };
 // 現在位置とスタンプの距離をはかる
 function calculateDistance(latlng,id){
-  json_latlng = JSON.parse(latlng)
+
+  latlng_arr = latlng.split(',');
 
   let stampPosition = {
-        lat: json_latlng["lat"],
-        lng: json_latlng["lng"],
+        lat: parseFloat(latlng_arr[0]),
+        lng: parseFloat(latlng_arr[1]),
       };
 
-  console.log(stampPosition);
   let calculateBtnId = id
   let stampBtnId = id + "-stamp";
   let stampValidate = document.getElementById('stamp_validate');
