@@ -5,6 +5,7 @@
         <th>
           <input type="checkbox" class="checkbox" />
         </th>
+        <th>URL</th>
         <th>タイトル</th>
         <th>金額</th>
         <th>場所</th>
@@ -14,7 +15,6 @@
         <th>終了日</th>
         <th>時間</th>
         <th>住所</th>
-        <th>URL</th>
         <th>緯度</th>
         <th>経度</th>
       </tr>
@@ -27,6 +27,9 @@
               <%= f.check_box :availability, class: 'checkbox' %>
             </label>
           </th>
+          <td>
+            <%= f.text_field :url, class: 'textarea textarea-primary' %>
+          </td>
           <td>
             <%= f.text_field :title, class: 'textarea textarea-primary' %>
           </td>
@@ -53,9 +56,6 @@
           </td>
           <td>
             <%= f.text_field :address, class: 'textarea textarea-primary' %>
-          </td>
-          <td>
-            <%= f.text_field :url, class: 'textarea textarea-primary' %>
           </td>
           <td>
             <%= f.number_field :latitude, class: 'input input-bordered input-primary' %>
