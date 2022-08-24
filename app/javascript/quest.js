@@ -19,7 +19,7 @@ map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById
   // 投稿データをマーカーに代入する
   for (var i = 0; i < jdata.length; i++) {
     // 投稿ごとの緯度経度
-    markerLatLng = {lat: jdata[i]['latlng']['lat'], lng: jdata[i]['latlng']['lng']};
+    markerLatLng = {lat: parseFloat(jdata[i]['latitude']), lng: parseFloat(jdata[i]['longitude'])};
     // マーカーに投稿ごとの緯度経度を代入
     marker[i] = new google.maps.Marker({
       position: markerLatLng,

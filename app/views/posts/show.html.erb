@@ -29,9 +29,6 @@
       </table>
     </div>
   </div>
-  <div class="www rounded-lg mb-4">
-    <p class="p-4 text-white text-lg leading-loose"><%=safe_join(@post.body.split("\n"),tag(:br))%></p>
-  </div>
   <div class="text-center">
     <% if current_user %>
       <%= link_to 'クエストに出かける', quests_path(id: @post.id), data: { turbo_method: :post }, class: 'btn btn-primary' %>
