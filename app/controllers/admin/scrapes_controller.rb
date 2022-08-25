@@ -1,4 +1,4 @@
-class Admin::ScrapesController < ApplicationController
+class Admin::ScrapesController < Admin::BaseController
   def create
     data = Scraping.new
     scraped_data = data.scrape(params[:page_number],params[:area_name],params[:area_num])

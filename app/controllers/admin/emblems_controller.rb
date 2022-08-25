@@ -1,4 +1,4 @@
-class Admin::EmblemsController < ApplicationController
+class Admin::EmblemsController < Admin::BaseController
 
   def index
     @emblems = Emblem&.all

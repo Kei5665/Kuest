@@ -1,4 +1,4 @@
-class Admin::AreasController < ApplicationController
+class Admin::AreasController < Admin::BaseController
 
   def index
     @areas = Area&.all

@@ -1,21 +1,4 @@
-class Admin::PostsController < ApplicationController
-  def index
-    @posts = Post.all.order(area_id: :desc)
-  end
-
-  # def edit
-  #   @post = Post.find(params[:id])
-  # end
-
-  # def update
-  #   @post = Post.find(params[:id])
-  #   if @post.update(post_params)
-  #     redirect_to admin_posts_path, success: "更新成功しました"
-  #   else
-  #     redirect_to admin_posts_path, danger: "更新失敗しました"
-  #     render :new
-  #   end
-  # end
+class Admin::PostsController < Admin::BaseController
 
   def create
     @form = Form::ProductCollection.new(product_collection_params)
@@ -39,10 +22,6 @@ class Admin::PostsController < ApplicationController
   end
 
   private
-
-  # def post_params
-  #   params.require(:post).permit(:title, :body, :latlng, :image, :place, :date, :time, :price, :address)
-  # end
 
   def product_collection_params
     params.require(:form_product_collection)
