@@ -1,8 +1,22 @@
 <input type="checkbox" id="my-modal-users" class="modal-toggle" />
 <label for="my-modal-users" class="modal cursor-pointer">
   <label class="modal-box relative overflow-y-auto h-full">
-    <p class="text-lg">現在レベル</p>
-    <p class="text-lg"><%= current_user&.current_emblems&.last&.name %></p>
+    <p class="text-3xl text-center my-8">現在のレベル</p>
+    <p class="text-5xl text-center my-8"><%= current_user&.current_emblems&.last&.name %></p>
+    <div class="flex justify-center my-8">
+      <div class="stats shadow mx-auto text-center">
+        <div class="stat">
+          <div class="stat-figure text-primary">
+          <% if @emblem.emblem_image.attached? %>
+            <%= image_tag @emblem.emblem_image.variant(resize: "200x200>"),class: "col-span-2 rounded-xl self-center" %>
+          <% end %>
+          </div>
+          <div class="stat-title">クエストクリア回数</div>
+          <div class="stat-value text-primary"><%= current_user.clear_num %></div>
+          <div class="stat-desc"><%= @level_statement %></div>
+        </div>
+      </div>
+    </div>
     <%= render 'quests/finishes'%>
     <div class="text-center">
       <label for="my-modal-users" class="btn">閉じる</label>

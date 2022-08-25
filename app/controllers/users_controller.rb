@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(update_params)
-      redirect_to root_path, success: "変更が成功しました"
+      redirect_to quests_path, success: "変更が成功しました"
     else
       flash.now[:danger] = "変更に失敗しました"
       render :edit

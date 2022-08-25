@@ -6,6 +6,9 @@ class QuestsController < ApplicationController
     gon.json = @posts.to_json
     gon.yuusya_img = current_user.assets_path
     @finished_quests = current_user.ordered_quests.joins(:quests).where(quests: {quest_cleared: true})
+
+    @level_statement = current_user.select_emblem(current_user.clear_num)
+    @emblem = current_user.current_emblems.last
   end
 
   def create
