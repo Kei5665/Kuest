@@ -9,8 +9,7 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_to areas_path, success: "ログインしました！"
     else
-      flash.now[:error] = "ログインできませんでした"
-      render action: 'new'
+      redirect_to areas_path, danger: "ログインできませんでした"
     end
   end
 
