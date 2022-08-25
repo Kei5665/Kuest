@@ -1,16 +1,26 @@
-<div class="bg-yellow-400 h-screen overflow-hidden flex items-center justify-center">
-  <div class="bg-white lg:w-5/12 md:6/12 w-10/12 shadow-3xl">
-    <div class="bg-gray-800 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-2 md:p-4">
-      <p class="text-white text-lg">編集</p>
-    </div>
-    <%= form_with model:@user, local: true do |f|%>
-      <div class="flex items-center text-lg mb-6 md:mb-8">
-        <svg class="absolute ml-3" width="24" viewBox="0 0 24 24">
-          <path d="M20.822 18.096c-3.439-.794-6.64-1.49-5.09-4.418 4.72-8.912 1.251-13.678-3.732-13.678-5.082 0-8.464 4.949-3.732 13.678 1.597 2.945-1.725 3.641-5.09 4.418-3.073.71-3.188 2.236-3.178 4.904l.004 1h23.99l.004-.969c.012-2.688-.092-4.222-3.176-4.935z"/>
-        </svg>
-        <%= f.text_field :name, class:"bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full", placeholder: "Username" %>
+<section class="bg-gray-50 dark:bg-gray-900">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+          ユーザー編集
+      </a>
+      <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <%= form_with model: @user, class: 'space-y-4 md:space-y-6', local: true do |f| %>
+                  <div>
+                    <%= f.label :name,class:'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+                    <%= f.text_field :name, class: 'bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50' %>
+                  </div>
+                  <div>
+                    <%= f.label :email,class:'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+                    <%= f.text_field :email, class: 'bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50' %>
+                  </div>
+                  <div>
+                    <%= f.label :password, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+                    <%= f.password_field :password, class: 'bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' %>
+                  </div>
+                  <%= f.submit "登録", class: 'btn btn-primary w-full' %>
+              <%end%>
+          </div>
       </div>
-      <%= f.submit "更新する", class:"bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase w-full" %>
-    <%end%>
-    </div>
- </div>
+  </div>
+</section>
