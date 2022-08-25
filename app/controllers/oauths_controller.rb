@@ -12,6 +12,9 @@ class OauthsController < ApplicationController
         @user = create_from(provider)
         reset_session
         auto_login(@user)
+        
+        emblem = Emblem.first
+        current_user.user_emblems.create(emblem_id: emblem.id)
         redirect_to areas_path, success: "#{provider.titleize}でログインしました！"
       rescue StandardError
         redirect_to root_path, danger: "#{provider.titleize}でのログインに失敗しました"

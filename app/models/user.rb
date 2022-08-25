@@ -15,7 +15,7 @@ class User < ApplicationRecord
     strongest = Emblem.last
 
     if  clear_num == 0
-      number_needed = begginer.limit_num  - clear_num
+      number_needed = intermediate.limit_num  - clear_num
       "あと#{number_needed}回クリアでレベルアップ！"
     elsif clear_num == 1
       new_emblem = self.user_emblems.build(emblem_id: intermediate.id)
