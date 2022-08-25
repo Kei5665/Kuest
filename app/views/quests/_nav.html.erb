@@ -8,7 +8,6 @@
       <%else%>
         <%= link_to 'ログイン', auth_at_provider_path(provider: :google), class: "btn my-2"%>
       <%end%>
-      <%= link_to '使い方', home_index_path, class: "btn my-2"%>
       <%= link_to "ユーザー名編集", edit_user_path(current_user), class: "btn my-2"%>
     </ul>
   </div>
