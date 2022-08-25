@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_24_115148) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_25_072346) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -114,6 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_115148) do
     t.datetime "updated_at", null: false
     t.integer "clear_num", default: 0, null: false
     t.string "assets_path", default: "/assets/yuusya1.png"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
