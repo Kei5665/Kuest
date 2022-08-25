@@ -81,7 +81,6 @@ map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById
 };
 // 現在位置とスタンプの距離をはかる
 function calculateDistance(latlng,id){
-
   latlng_arr = latlng.split(',');
 
   let stampPosition = {
@@ -91,21 +90,30 @@ function calculateDistance(latlng,id){
 
   let calculateBtnId = id
   let stampBtnId = id + "-stamp";
-  let stampValidate = document.getElementById('stamp_validate');
+  let stampValidate = document.querySelectorAll('.stamp_validate')
   let calculateBtn = document.getElementById(calculateBtnId);
   let stampBtn = document.getElementById(stampBtnId);
 
-  let distance = google.maps.geometry.spherical.computeDistanceBetween(currentPosition, stampPosition);
-  if (distance <= 50.0) {
-    calculateBtn.setAttribute("disabled", true);
-    stampBtn.removeAttribute("disabled");
-    console.log(stampBtn)
+  if ( typeof currentPosition !== 'undefined') {
+    let distance = google.maps.geometry.spherical.computeDistanceBetween(currentPosition, stampPosition);
+    if (distance <= 50.0) {
+      calculateBtn.setAttribute("disabled", true);
+      stampBtn.removeAttribute("disabled");
+    } else {
+      stampValidate.forEach(function (element) {
+        element.classList.remove("disable");
+      });
+    };    
   } else {
-    stampValidate.classList.remove("disable");
-  };
+    stampValidate.forEach(function (element) {
+      element.classList.remove("disable");
+    });
+  }
 };
 
 function closeValidate(){
-  let stampValidate = document.getElementById('stamp_validate');
-  stampValidate.classList.add("disable");
+  let stampValidate = document.querySelectorAll('.stamp_validate')
+  stampValidate.forEach(function (element) {
+    element.classList.add("disable");
+  });
 }

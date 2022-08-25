@@ -5,6 +5,7 @@
     <h1 class="text-3xl text-center text-white my-8"><%=post.title%></h1>
     <div>
       <%= image_tag 'kuest', class: 'rounded-lg'%>
+      <%= render 'shared/validate_stamp'%>
       <table class="table-auto my-8">
         <tbody>
           <tr>
@@ -30,9 +31,9 @@
         </tbody>
       </table>
     </div>
-  <div class="card-actions justify-start">
+    <div class="card-actions justify-start">
       <%= link_to 'クエストをキャンセルする', quest_path(post), data: { turbo_method: :delete }, class: 'btn btn-error' %>
-      <button class="btn btn-warning" id="<%=post.id%>" value="<%=post.latitude%>,<%=post.longitude%>" onclick="calculateDistance(this.value,this.id)">距離を測る</button>
+      <button class="btn btn-warning" id="<%=post.id%>" value="<%=post.latitude%>,<%=post.longitude%>" onclick="calculateDistance(this.value,this.id)">距離を確認</button>
       <%= link_to 'クエストクリア！', clear_quest_path(id: post.id),id: "#{post.id}-stamp", class: 'btn btn-success',disabled: true %>
       <label for="my-modal-<%=post.id%>" class="btn">閉じる</label>
     </div>
