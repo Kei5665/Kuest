@@ -91,6 +91,7 @@ function calculateDistance(latlng,id){
   let calculateBtnId = id
   let stampBtnId = id + "-stamp";
   let stampValidate = document.querySelectorAll('.stamp_validate')
+  let undefinedValidate = document.querySelectorAll('.undefined_validate')
   let calculateBtn = document.getElementById(calculateBtnId);
   let stampBtn = document.getElementById(stampBtnId);
 
@@ -105,7 +106,7 @@ function calculateDistance(latlng,id){
       });
     };    
   } else {
-    stampValidate.forEach(function (element) {
+    undefinedValidate.forEach(function (element) {
       element.classList.remove("disable");
     });
   }
@@ -114,6 +115,13 @@ function calculateDistance(latlng,id){
 function closeValidate(){
   let stampValidate = document.querySelectorAll('.stamp_validate')
   stampValidate.forEach(function (element) {
+    element.classList.add("disable");
+  });
+}
+
+function closeUndefined(){
+  let undefinedValidate = document.querySelectorAll('.undefined_validate')
+  undefinedValidate.forEach(function (element) {
     element.classList.add("disable");
   });
 }
